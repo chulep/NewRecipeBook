@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddIngredientPresentationLogic {
-    func presentData(model: AddIngredientModels.FetchData.Response)
+    func presentData(data: AddIngredientModels.FetchData.Response)
 }
 
 final class AddIngredientPresenter: AddIngredientPresentationLogic {
@@ -17,8 +17,7 @@ final class AddIngredientPresenter: AddIngredientPresentationLogic {
     
     //MARK: - Present Method
     
-    func presentData(model: AddIngredientModels.FetchData.Response) {
-        let viewModel = AddIngredientModels.FetchData.ViewModel(ingredients: model.ingredients)
-        viewController?.displaying(viewModel: viewModel)
+    func presentData(data: AddIngredientModels.FetchData.Response) {
+        viewController?.displaying(data: AddIngredientModels.FetchData.ViewModel(ingredients: data.ingredients))
     }
 }

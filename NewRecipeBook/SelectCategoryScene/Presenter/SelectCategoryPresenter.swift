@@ -20,14 +20,11 @@ extension SelectCategoryPresenter: SelectCategoryPresentationLogic {
     //MARK: - Presented Method
     
     func presentData(category: String?, data: SelectCategoryModels.FecthData.Response) {
-        var formattedRecipes = [SelectCategoryModels.FecthData.ViewModel.FormattedRecipe]()
-        guard let recipes = filtredCategory(data: data.recipes, category: category)
-        else { viewController?.displaying(category: category, data: SelectCategoryModels.FecthData.ViewModel(displayRecipes: formattedRecipes)); return }
+        let filtredRecipes = filtredCategory(data: data.recipes, category: category)
         
-        for i in recipes {
-            let formattedRecipe = SelectCategoryModels.FecthData.ViewModel.FormattedRecipe(name: i.name, image: i.image)
-            formattedRecipes.append(formattedRecipe)
-        }
+        let formattedRecipes = filtredRecipes?.map({ recipe in
+            SelectCategoryModels.FecthData.ViewModel.FormattedRecipe(name: recipe.name, image: recipe.image)
+        }) ?? [SelectCategoryModels.FecthData.ViewModel.FormattedRecipe]()
         
         viewController?.displaying(category: category, data: SelectCategoryModels.FecthData.ViewModel(displayRecipes: formattedRecipes))
     }

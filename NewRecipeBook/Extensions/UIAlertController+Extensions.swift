@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIAlertController {
-    func createCategoryAlert(name: [String], complation: @escaping (String) -> Void) -> UIAlertController {
+    func createCategoryAlert(name: [String], completion: @escaping (String) -> Void) -> UIAlertController {
         let alertController = UIAlertController(title: "Выберите категорию:", message: nil, preferredStyle: .actionSheet)
         for i in name {
             let button = UIAlertAction(title: i, style: .default) { action in
-                complation(i)
+                completion(i)
             }
             alertController.addAction(button)
         }

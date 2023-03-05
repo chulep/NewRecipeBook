@@ -114,7 +114,7 @@ class DetailViewController: UIViewController {
     }
     
     @objc func tapToCalculator() {
-        navigationController?.pushViewController(CalculatorViewController(), animated: true)
+        router?.navigateToCalculator()
     }
 }
 

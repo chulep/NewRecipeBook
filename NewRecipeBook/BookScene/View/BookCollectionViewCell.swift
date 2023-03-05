@@ -11,33 +11,41 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     static let identifire = "recipeCell"
     
-    private var imageView = UIImageView()
-    private var nameLabel = UILabel()
+    //MARK: - UI Elements
+    
+    private var imageView: UIImageView = {
+        $0.tintColor = ColorHelper.gray
+        $0.backgroundColor = ColorHelper.lightGray
+        $0.layer.cornerRadius = 10
+        $0.clipsToBounds = true
+        return $0
+    }(UIImageView())
+    
+    private var titleLabel: UILabel = {
+        $0.textAlignment = .center
+        $0.numberOfLines = 2
+        return $0
+    }(UILabel())
+    
+    //MARK: - LayoutSubviews
     
     override func layoutSubviews() {
         super.layoutSubviews()
         createUI()
     }
     
+    //MARK: - Create UI
+    
     private func createUI() {
-        addSubview(imageView)
-        addSubview(nameLabel)
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        backgroundColor = ColorHelper.babackgroundGrey
         
-        nameLabel.textAlignment = .center
-        nameLabel.numberOfLines = 2
+        addSubview(imageView)
+        addSubview(titleLabel)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        imageView.tintColor = ColorHelper.gray
-        imageView.backgroundColor = ColorHelper.lightGray
-        imageView.layer.cornerRadius = 10
-        imageView.clipsToBounds = true
-        
-        self.layer.cornerRadius = 10
-        self.clipsToBounds = true
-        
-        self.backgroundColor = ColorHelper.babackgroundGrey
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
@@ -45,15 +53,17 @@ class BookCollectionViewCell: UICollectionViewCell {
             imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -5),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            nameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 7),
-            nameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -7),
-            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 7),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -7),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
-    func setData(text: String?, imageData: Data?) {
-        nameLabel.text = text
+    //MARK: - Set data
+    
+    func setData(title: String?, imageData: Data?) {
+        titleLabel.text = title
         if imageData != nil {
             imageView.contentMode = .scaleAspectFill
             imageView.image = UIImage(data: imageData!)

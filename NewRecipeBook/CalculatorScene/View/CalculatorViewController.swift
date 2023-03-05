@@ -45,11 +45,6 @@ class CalculatorViewController: UIViewController {
         setupNavBar()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     //MARK: - Setuo VIP
 
     private func setup() {
@@ -99,7 +94,7 @@ class CalculatorViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        title = "Калькулятор"
+        title = NameHelper.CalculatorScene.titleText
         navigationController?.navigationBar.tintColor = ColorHelper.white
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.setBarColor(color: UIColor.orange)

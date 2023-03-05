@@ -9,6 +9,7 @@ import Foundation
 
 enum BasketModels {
 	enum FecthData {
+        
         struct Response {
             let ingredients: [String]
         }

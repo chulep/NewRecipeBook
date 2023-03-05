@@ -20,7 +20,11 @@ extension DetailPresenter: DetailPresentationLogic {
     //MARK: - Presented Method
     
     func presentData(data: DetailModels.FecthData.Response) {
-        let viewModel = DetailModels.FecthData.ViewModel(name: data.recipe.name, image: data.recipe.image, ingredients: data.recipe.ingredients, description: data.recipe.descriptions, isFavorite: data.recipe.isFavorite)
+        let viewModel = DetailModels.FecthData.ViewModel(name: data.recipe.name,
+                                                         image: data.recipe.image,
+                                                         ingredients: data.recipe.ingredients,
+                                                         description: data.recipe.descriptions,
+                                                         isFavorite: data.recipe.isFavorite)
         viewController?.displaying(data: viewModel)
     }
 

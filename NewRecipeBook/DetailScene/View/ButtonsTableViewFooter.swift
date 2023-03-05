@@ -10,34 +10,44 @@ import UIKit
 class ButtonsTableViewFooter: UITableViewHeaderFooterView {
     
     static let identifire = "basketFooter"
+    
+    //MARK: - UI Elements
 
-    let basketButton = UIButton()
-    let calculatorButton = UIButton()
-    let backgroundWhiteView = UIView()
+    let basketButton: UIButton = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setImage(UIImage(systemName: "cart"), for: .normal)
+        $0.setTitle(NameHelper.DetailScene.basketButtonText, for: .normal)
+        $0.backgroundColor = ColorHelper.orange
+        $0.layer.cornerRadius = ConstantHelper.radius
+        $0.addTarget(nil, action: #selector(DetailViewController.tapToBasket), for: .touchUpInside)
+        $0.tintColor = ColorHelper.white
+        return $0
+    }(UIButton())
+    
+    let calculatorButton: UIButton = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setImage(UIImage(systemName: "square.grid.3x3"), for: .normal)
+        $0.setTitle(NameHelper.DetailScene.calculatorButtonText, for: .normal)
+        $0.backgroundColor = ColorHelper.orange
+        $0.layer.cornerRadius = ConstantHelper.radius
+        $0.addTarget(nil, action: #selector(DetailViewController.tapToCalculator), for: .touchUpInside)
+        $0.tintColor = ColorHelper.white
+        return $0
+    }(UIButton())
+    
+    //MARK: - LayoutSubviews
     
     override func layoutSubviews() {
         super.layoutSubviews()
         createUI()
     }
     
+    //MARK: - Create UI
+    
     func createUI() {
-        
         addSubview(basketButton)
-        basketButton.translatesAutoresizingMaskIntoConstraints = false
-        basketButton.setImage(UIImage(systemName: "cart"), for: .normal)
-        basketButton.setTitle(" В корзину", for: .normal)
-        basketButton.backgroundColor = ColorHelper.orange
-        basketButton.layer.cornerRadius = ConstantHelper.radius
-        basketButton.addTarget(nil, action: #selector(DetailViewController.tapToBasket), for: .touchUpInside)
-        
         addSubview(calculatorButton)
-        calculatorButton.translatesAutoresizingMaskIntoConstraints = false
-        calculatorButton.setImage(UIImage(systemName: "square.grid.3x3"), for: .normal)
-        calculatorButton.setTitle(" Калькулятор", for: .normal)
-        calculatorButton.backgroundColor = ColorHelper.orange
-        calculatorButton.layer.cornerRadius = ConstantHelper.radius
-        calculatorButton.addTarget(nil, action: #selector(DetailViewController.tapToCalculator), for: .touchUpInside)
-        
+
         NSLayoutConstraint.activate([
             basketButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
             basketButton.topAnchor.constraint(equalTo: topAnchor, constant: 3),

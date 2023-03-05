@@ -31,6 +31,7 @@ final class NewDesriptionSectorViewController: UIViewController {
     }(UIButton())
     
     private var textView: UITextView = {
+
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = false
         $0.layer.borderWidth = 1
@@ -47,6 +48,7 @@ final class NewDesriptionSectorViewController: UIViewController {
         super.viewDidLoad()
         createUI()
         setupNavBar()
+        textView.delegate = self
     }
     
     //MARK: - Create UI
@@ -54,14 +56,12 @@ final class NewDesriptionSectorViewController: UIViewController {
     private func createUI() {
         view.backgroundColor = .white
         
-        textView.delegate = self
-        
+        view.addSubview(confirmButton)
         view.addSubview(textView)
+        
         textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
         textView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         textView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        
-        view.addSubview(confirmButton)
         
         NSLayoutConstraint.activate([
             confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),

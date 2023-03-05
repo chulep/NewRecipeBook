@@ -20,12 +20,10 @@ extension FavoritePresenter: FavoritePresentationLogic {
     //MARK: - Presented Method
     
     func presentData(data: FavoriteModels.FecthData.Response) {
-        var formattedRecipes = [FavoriteModels.FecthData.ViewModel.FormattedRecipe]()
-        guard let recipes = data.recipes else { viewController?.displaying(data: FavoriteModels.FecthData.ViewModel(displayRecipes: formattedRecipes)); return }
-        for i in recipes {
-            formattedRecipes.append(FavoriteModels.FecthData.ViewModel.FormattedRecipe(name: i.name, image: i.image))
-        }
+        let formattedRecipes = data.recipes?.map ({ recipe in
+            FavoriteModels.FecthData.ViewModel.FormattedRecipe(name: recipe.name, image: recipe.image)
+        }) ?? [FavoriteModels.FecthData.ViewModel.FormattedRecipe]()
+        
         viewController?.displaying(data: FavoriteModels.FecthData.ViewModel(displayRecipes: formattedRecipes))
     }
-
 }

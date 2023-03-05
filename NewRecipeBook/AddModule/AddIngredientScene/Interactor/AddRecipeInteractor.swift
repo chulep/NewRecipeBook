@@ -30,7 +30,7 @@ final class AddIngredientInteractor: AddIngredientBusinessLogic, AddIngredientDa
     func fetchData() {
         guard let data = saveIngredientData?.ingredients else { return }
         let presenterModel = AddIngredientModels.FetchData.Response(ingredients: data)
-        presenter?.presentData(model: presenterModel)
+        presenter?.presentData(data: presenterModel)
     }
     
     //MARK: - Save Data

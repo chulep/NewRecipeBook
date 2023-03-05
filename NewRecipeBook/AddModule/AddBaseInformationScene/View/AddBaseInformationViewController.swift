@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddBaseInformationDisplayLogic: AnyObject {
-    func displaying(viewModel: AddBaseInformationModels.FetchData.ViewModel)
+    func displaying(data: AddBaseInformationModels.FetchData.ViewModel)
 }
 
 final class AddBaseInformationViewController: UIViewController {
@@ -168,8 +168,8 @@ final class AddBaseInformationViewController: UIViewController {
 //MARK: - Displaying Method
 
 extension AddBaseInformationViewController: AddBaseInformationDisplayLogic {
-    func displaying(viewModel: AddBaseInformationModels.FetchData.ViewModel) {
-        categoryAlertController = categoryAlertController.createCategoryAlert(name: viewModel.category, complation: { [weak self] category in
+    func displaying(data: AddBaseInformationModels.FetchData.ViewModel) {
+        categoryAlertController = categoryAlertController.createCategoryAlert(name: data.category, completion: { [weak self] category in
             self?.categoryButton.setTitle(category, for: .normal)
             self?.categoryButton.setTitleColor(ColorHelper.orange, for: .normal)
         })

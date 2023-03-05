@@ -25,7 +25,7 @@ class AddDescriptionRouter: AddDescriptionDataPassing {
 
 extension AddDescriptionRouter: AddDescriptionRoutingLogic {
     
-    //MARK: - Methods
+    //MARK: - Navigate methods
     
     func dismissScene() {
         viewController?.dismiss(animated: true)

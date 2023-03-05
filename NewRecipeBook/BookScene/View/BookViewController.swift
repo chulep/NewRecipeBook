@@ -17,6 +17,8 @@ protocol TableViewCellDelegate: AnyObject {
 
 final class BookViewController: UIViewController, BookDisplayLogic {
     
+    //MARK: - Properties
+    
     var interactor: BookBusinessLogic?
     private(set) var router: (BookRoutingLogic & BookDataPassing)?
     private var data: BookModels.FecthData.ViewModel?
@@ -24,14 +26,15 @@ final class BookViewController: UIViewController, BookDisplayLogic {
     
     // MARK: - UI Element
     
-    var button: UIButton = {
+    private var addButton: UIButton = {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
         $0.tintColor = .white
         $0.backgroundColor = ColorHelper.orange
+        $0.addTarget(nil, action: #selector(tapButton), for: .touchUpInside)
         return $0
     }(UIButton())
     
-    var helpLabel = {
+    private var helpLabel = {
         $0.text = NameHelper.BookScene.helpLabelText
         $0.textColor = ColorHelper.gray
         $0.textAlignment = .center
@@ -92,22 +95,22 @@ final class BookViewController: UIViewController, BookDisplayLogic {
     
     //MARK: - UI
     
-    func createUI() {
+    private func createUI() {
         view.addSubview(collectionView)
-        view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-        button.layer.cornerRadius = view.bounds.width / 7 / 2
-        button.clipsToBounds = true
-        
+        view.addSubview(addButton)
         view.addSubview(helpLabel)
+        
         helpLabel.frame = view.bounds
         
+        addButton.layer.cornerRadius = view.bounds.width / 7 / 2
+        addButton.clipsToBounds = true
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-            button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/7),
-            button.heightAnchor.constraint(equalTo: button.widthAnchor)
+            addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/7),
+            addButton.heightAnchor.constraint(equalTo: addButton.widthAnchor)
         ])
     }
     
@@ -129,13 +132,15 @@ final class BookViewController: UIViewController, BookDisplayLogic {
         return flowLayout
     }
     
-    @objc func tapButton() {
+    //MARK: - Action Methods
+    
+    @objc private func tapButton() {
         router?.navigateToAdd()
     }
     
     //MARK: - Setup Collection View
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -145,7 +150,7 @@ final class BookViewController: UIViewController, BookDisplayLogic {
     }
 }
 
-//MARK: - CollectionView Delegate & DataSource & FlowLayout (header/footer)
+//MARK: - CollectionView Delegate & DataSource & FlowLayout
 
 extension BookViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -162,25 +167,29 @@ extension BookViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    // cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifire, for: indexPath) as! BookCollectionViewCell
             let image = data?.displayRecipes[indexPath.row].image
             let name = data?.displayRecipes[indexPath.row].name
-            cell.setData(text: name, imageData: image)
+            cell.setData(title: name, imageData: image)
             return cell
         default:
             return UICollectionViewCell()
         }
     }
     
+    //navigate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         router?.navigateToDetail(indexPath: indexPath)
     }
 }
 
 extension BookViewController: UICollectionViewDelegateFlowLayout {
+    
+    // header & footer
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch indexPath.section {
         case 0:
@@ -196,8 +205,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    
-    
+    // size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if isSearch {
             return CGSize(width: view.bounds.width, height: 0)
@@ -231,9 +239,7 @@ extension BookViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(false, animated: true)
-        searchBar.endEditing(true)
-        searchBar.text = ""
+        searchBar.endEditing(animated: true)
         isSearch = false
         helpLabel.isHidden = true
         navigationController?.hidesBarsOnSwipe = true
@@ -242,14 +248,14 @@ extension BookViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         isSearch = true
-        interactor?.search(model: BookModels.FecthData.Request(searchText: searchBar.text))
+        interactor?.search(data: BookModels.FecthData.Request(searchText: searchBar.text))
         navigationController?.hidesBarsOnSwipe = false
         helpLabel.isHidden(count: data?.displayRecipes.count)
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.text = ""
-        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.endEditing(animated: true)
+        isSearch = false
         return true
     }
 }

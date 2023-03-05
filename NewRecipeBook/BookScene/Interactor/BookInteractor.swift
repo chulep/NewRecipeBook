@@ -9,7 +9,7 @@ import Foundation
 
 protocol BookBusinessLogic {
     func fetchData()
-    func search(model: BookModels.FecthData.Request)
+    func search(data: BookModels.FecthData.Request)
 }
 
 protocol BookDataStore {
@@ -39,9 +39,9 @@ final class BookInteractor: BookBusinessLogic, BookDataStore {
     
     //MARK: - Search Data
     
-    func search(model: BookModels.FecthData.Request) {
-        let searchText = model.searchText ?? ""
-        guard let dataFiltred = data?.filter({ return String($0.name ?? "").lowercased().contains(searchText.lowercased()) }) else { return }
+    func search(data: BookModels.FecthData.Request) {
+        let searchText = data.searchText ?? ""
+        guard let dataFiltred = self.data?.filter({ return String($0.name ?? "").lowercased().contains(searchText.lowercased()) }) else { return }
         presenter?.present(data: BookModels.FecthData.Response(recipes: dataFiltred))
     }
 }

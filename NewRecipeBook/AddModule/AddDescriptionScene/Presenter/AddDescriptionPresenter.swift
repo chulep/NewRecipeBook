@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddDescriptionPresentationLogic {
-    func presentData(model: AddDescriptionModels.FetchData.Response)
+    func presentData(data: AddDescriptionModels.FetchData.Response)
 }
 
 class AddDescriptionPresenter {
@@ -19,9 +19,8 @@ extension AddDescriptionPresenter: AddDescriptionPresentationLogic {
     
     //MARK: - Presentation Method
     
-    func presentData(model: AddDescriptionModels.FetchData.Response) {
-        let viewModel = AddDescriptionModels.FetchData.ViewModel(description: model.description)
-        viewController?.displaying(viewModel: viewModel)
+    func presentData(data: AddDescriptionModels.FetchData.Response) {
+        viewController?.displaying(data: AddDescriptionModels.FetchData.ViewModel(description: data.description))
     }
 
 }

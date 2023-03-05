@@ -83,14 +83,15 @@ struct NameHelper {
     struct DetailScene {
         static let backButtonText = "Назад"
         static let ingredientHeaderText = "Ингредиенты"
-        static let basketButtonText = "Корзина"
-        static let calculatorButtonText = "Калькулятор"
+        static let basketButtonText = " В корзину"
+        static let calculatorButtonText = " Калькулятор"
         static let descriptionHeaderText = "Процесс приготовления"
     }
     
     //MARK: - Calculator scene
     
     struct CalculatorScene {
+        static let titleText = "Калькулятор"
         static let inputViewText = "Грамм"
         static let cupViewText = "Стаканы"
         static let spoonViewText = "Столовые ложки"

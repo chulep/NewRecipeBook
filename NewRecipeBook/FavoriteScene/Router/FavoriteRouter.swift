@@ -23,7 +23,7 @@ class FavoriteRouter: FavoriteDataPassing {
 
 extension FavoriteRouter: FavoriteRoutingLogic {
     
-    //MARK: - Methods
+    //MARK: - Navigate methods
 
     func navigateToDetail(indexPath: IndexPath) {
         let detailViewController = DetailViewController()

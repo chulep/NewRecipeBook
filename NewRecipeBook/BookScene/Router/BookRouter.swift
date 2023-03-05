@@ -24,7 +24,7 @@ final class BookRouter: BookRoutingLogic, BookDataPassing {
     weak var viewController: UIViewController?
     var dataStore: BookDataStore?
     
-    //MARK: - Methods
+    //MARK: - Navigate methods
     
     func navigateToAdd() {
         let addViewController = AddBaseInformationViewController()
