@@ -4,7 +4,7 @@
 Имеет простой интуитивный дизайн. 
 ___
 Ниже представлено несколько скриншотов из приложения:
-![alt text](https://lh3.googleusercontent.com/pw/AMWts8BGcPQiIdr04OXOqsD9txixLlpiAzgtILE5u-tZXEMER55AxEtbPALOioO77S4tBtx8vIlJP7_4Pe1f2UIOO3TZw2MYvZ9DVYZlKlBIU9ktPpsf03xVt4iat4soVrGm8_b_kccUXC1Ty-Gz-jrpVEB_=w1860-h1000-no?authuser=0)
+![alt text](https://lh3.googleusercontent.com/pw/AMWts8AxMz9GY-DnuvdFP8W9hn-o4gFHt4C993FNEWEkNFklREOBKqMOBiZH2yBLq5rxnJHM0x8B5Jl_3kUnm94jI0qN1oEKYPapAkG9KTa7ra407wRulwMS-6kth0wPmqt80ao6DH_noTN6SZowaymU5RNe=w1850-h1000-no?authuser=0)
 ___
 Приложение построено на Clean Swift, с использованием UIKit, CoreData, ...
 
