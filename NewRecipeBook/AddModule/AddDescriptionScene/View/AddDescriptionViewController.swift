@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddDescriptionDisplayLogic: AnyObject {
-    func displaying(viewModel: AddDescriptionModels.FetchData.ViewModel)
+    func displaying(data: AddDescriptionModels.FetchData.ViewModel)
 }
 
 protocol TextTransferDelegate: AnyObject {
@@ -84,7 +84,7 @@ class AddDescriptionViewController: UIViewController {
         self.router = router
     }
     
-    //MARK: - Setup UI
+    //MARK: - Create UI
     
     func createFlowLayout() -> UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
@@ -100,6 +100,7 @@ class AddDescriptionViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+        tableView.separatorStyle = .none
         tableView.register(AddDescriptionTableViewCell.self, forCellReuseIdentifier: AddDescriptionTableViewCell.identifire)
     }
     
@@ -160,8 +161,8 @@ class AddDescriptionViewController: UIViewController {
 //MARK: - Displaying Method
 
 extension AddDescriptionViewController: AddDescriptionDisplayLogic {
-    func displaying(viewModel: AddDescriptionModels.FetchData.ViewModel) {
-        sectors = viewModel.description
+    func displaying(data: AddDescriptionModels.FetchData.ViewModel) {
+        sectors = data.description
         tableView.reloadData()
     }
 }

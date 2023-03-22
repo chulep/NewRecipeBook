@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddIngredientDisplayLigic: AnyObject {
-    func displaying(viewModel: AddIngredientModels.FetchData.ViewModel)
+    func displaying(data: AddIngredientModels.FetchData.ViewModel)
 }
 
 final class AddIngredientViewController: UIViewController {
@@ -89,6 +89,7 @@ final class AddIngredientViewController: UIViewController {
         view.addSubview(label)
         view.addSubview(tableView)
         view.addSubview(nextSceneButton)
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         nextSceneButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -109,6 +110,7 @@ final class AddIngredientViewController: UIViewController {
         title = NameHelper.AddModule.IngredientScene.titleText
         let image = UIImage(systemName: "plus")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: image, target: self, action: #selector(tapToNewIngredient))
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
     }
     
     private func setupTableView() {
@@ -171,8 +173,8 @@ extension AddIngredientViewController: UITableViewDelegate, UITableViewDataSourc
 //MARK: - Displaying Method
 
 extension AddIngredientViewController: AddIngredientDisplayLigic {
-    func displaying(viewModel: AddIngredientModels.FetchData.ViewModel) {
-        ingredients = viewModel.ingredients
+    func displaying(data: AddIngredientModels.FetchData.ViewModel) {
+        ingredients = data.ingredients
         tableView.reloadData()
     }
 }

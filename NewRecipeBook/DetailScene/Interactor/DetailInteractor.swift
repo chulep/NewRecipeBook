@@ -29,8 +29,7 @@ class DetailInteractor: DetailBusinessLogic, DetailDataStore {
     
     func fetchData() {
         guard let recipe = data else { return }
-        let presenterModel = DetailModels.FecthData.Response(recipe: recipe)
-        presenter?.presentData(data: presenterModel)
+        presenter?.presentData(data: DetailModels.FecthData.Response(recipe: recipe))
     }
     
     //MARK: - Save ingredients to Basket

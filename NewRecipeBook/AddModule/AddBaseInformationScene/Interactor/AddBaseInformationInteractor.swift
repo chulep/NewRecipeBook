@@ -27,8 +27,7 @@ class AddBaseInformationInteractor: AddBaseInformationBusinessLogic, AddBaseInfo
     
     func fetchData() {
         let category = NameHelper.allCategories
-        let presenterModel = AddBaseInformationModels.FetchData.Response(category: category)
-        presenter?.presentData(model: presenterModel)
+        presenter?.presentData(data: AddBaseInformationModels.FetchData.Response(category: category))
     }
     
     //MARK: - Save Data

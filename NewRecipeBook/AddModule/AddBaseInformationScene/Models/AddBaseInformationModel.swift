@@ -8,15 +8,14 @@
 import Foundation
 
 enum AddBaseInformationModels {
-    // запрос от вью к интерактору
     
     enum FetchData {
-        // запрос от интерактора к презентеру
+
         struct Response {
             let category: [NameHelper.Category]
         }
         
-        // запрос от презентера к вью
+
         struct ViewModel {
             let category: [String]
         }

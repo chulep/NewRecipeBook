@@ -8,8 +8,8 @@
 import UIKit
 
 protocol DetailRoutingLogic {
-    func navigateToNextScene()
     func dismiss()
+    func navigateToCalculator()
 }
 
 protocol DetailDataPassing {
@@ -27,12 +27,12 @@ class DetailRouter: DetailDataPassing {
 extension DetailRouter: DetailRoutingLogic {
     
     //MARK: - Methods
-
-    func navigateToNextScene() {
-        //viewController?.present(nextViewController, animated: true)
-    }
     
     func dismiss() {
         viewController?.dismiss(animated: true)
+    }
+    
+    func navigateToCalculator() {
+        viewController?.navigationController?.pushViewController(CalculatorViewController(), animated: true)
     }
 }

@@ -11,14 +11,15 @@ import UIKit
 class CategoryCollectionReusableView: UICollectionReusableView {
     
     static let identifire = "categoryView"
+    
     weak var cellDelegate: TableViewCellDelegate?
-    var category = NameHelper.allCategories
+    private var category = NameHelper.allCategories
     
     //MARK: - UI Elements
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
     
-    private let nameLabel: UILabel = {
+    private let titleLabel: UILabel = {
         $0.text = NameHelper.BookScene.categoryLabelText
         $0.font = UIFont.boldSystemFont(ofSize: 25)
         return $0
@@ -32,19 +33,22 @@ class CategoryCollectionReusableView: UICollectionReusableView {
         createUI()
     }
     
-    func createUI() {
+    //MARK: - Create UI
+    
+    private func createUI() {
         addSubview(collectionView)
-        addSubview(nameLabel)
+        addSubview(titleLabel)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: topAnchor),
-            nameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
-            nameLabel.rightAnchor.constraint(equalTo: rightAnchor),
-            nameLabel.heightAnchor.constraint(equalToConstant: 50),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            collectionView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -59,7 +63,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
     }
     
     private func setupFlowLayout() -> UICollectionViewFlowLayout {
-        let cellSide = bounds.height - 55
+        let cellSide = bounds.height - 60
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.itemSize = CGSize(width: cellSide / 1.2, height: cellSide)
@@ -67,6 +71,8 @@ class CategoryCollectionReusableView: UICollectionReusableView {
         return flowLayout
     }
 }
+
+//MARK: - CollectionView Delegate & DataSourse
 
 extension CategoryCollectionReusableView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

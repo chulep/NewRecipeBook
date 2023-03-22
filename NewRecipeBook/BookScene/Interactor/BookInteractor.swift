@@ -9,7 +9,7 @@ import Foundation
 
 protocol BookBusinessLogic {
     func fetchData()
-    func search(model: BookModels.FecthData.Request)
+    func search(data: BookModels.FecthData.Request)
 }
 
 protocol BookDataStore {
@@ -29,7 +29,9 @@ final class BookInteractor: BookBusinessLogic, BookDataStore {
         CoreDataManager.execute.getAllDataTask { (result: Result<[Recipe]?, Error>) in
             switch result {
             case .success(let data):
-                self.data = data
+                self.data = data?.sorted { s1, s2 in
+                    s1.dateId! > s2.dateId!
+                }
             case .failure(let error):
                 print(error)
             }
@@ -39,9 +41,9 @@ final class BookInteractor: BookBusinessLogic, BookDataStore {
     
     //MARK: - Search Data
     
-    func search(model: BookModels.FecthData.Request) {
-        let searchText = model.searchText ?? ""
-        guard let dataFiltred = data?.filter({ return String($0.name ?? "").lowercased().contains(searchText.lowercased()) }) else { return }
+    func search(data: BookModels.FecthData.Request) {
+        let searchText = data.searchText ?? ""
+        guard let dataFiltred = self.data?.filter({ return String($0.name ?? "").lowercased().contains(searchText.lowercased()) }) else { return }
         presenter?.present(data: BookModels.FecthData.Response(recipes: dataFiltred))
     }
 }

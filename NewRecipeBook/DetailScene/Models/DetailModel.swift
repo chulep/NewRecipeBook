@@ -9,16 +9,11 @@ import Foundation
 
 enum DetailModels {
 	enum FecthData {
-        struct Request {
-            
-        }
         
-        // запрос от интерактора к презентеру
         struct Response {
             var recipe: Recipe
         }
         
-        // запрос от презентера к вью
         struct ViewModel {
             var name: String?
             var image: Data?

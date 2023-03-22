@@ -22,7 +22,7 @@ final class AddIngredientRouter: AddIngredientRoutingLogic, AddIngredientDataPas
     weak var viewController: UIViewController?
     var dataStore: AddIngredientDataStore?
     
-    //MARK: - Methods
+    //MARK: - Navigate methods
     
     func tapToNextScreen() {
         let nextVC = AddDescriptionViewController()

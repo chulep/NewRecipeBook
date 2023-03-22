@@ -27,8 +27,8 @@ class BasketInteractor: BasketBusinessLogic, BasketDataStore {
     //MARK: - Fetch Data
     
     func fetchData() {
-        let basketdata = UserDefaults.standard.object(forKey: ConstantHelper.basketKey) as? [String] ?? [String]()
-        presenter?.presentData(data: BasketModels.FecthData.Response(ingredients: basketdata))
+        let basketData = UserDefaults.standard.object(forKey: ConstantHelper.basketKey) as? [String] ?? [String]()
+        presenter?.presentData(data: BasketModels.FecthData.Response(ingredients: basketData))
     }
     
     //MARK: - Delete Methods

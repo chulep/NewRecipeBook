@@ -10,30 +10,38 @@ import UIKit
 class CategoryCollectionViewCell: UICollectionViewCell {
     static let identifire = "categoryCell"
     
-    private var imageView = UIImageView()
-    private var nameLabel = UILabel()
+    //MARK: - UI Elements
+    
+    private var imageView: UIImageView = {
+        $0.tintColor = ColorHelper.gray
+        $0.contentMode = .scaleAspectFit
+        return $0
+    }(UIImageView())
+    
+    private var titleLabel: UILabel = {
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
+    
+    //MARK: - LayoutSubviews
     
     override func layoutSubviews() {
         super.layoutSubviews()
         createUI()
     }
     
+    //MARK: - Create UI
+    
     private func createUI() {
-        addSubview(imageView)
-        addSubview(nameLabel)
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        backgroundColor = ColorHelper.babackgroundGrey
         
-        nameLabel.textAlignment = .center
+        addSubview(imageView)
+        addSubview(titleLabel)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        imageView.tintColor = ColorHelper.gray
-        imageView.contentMode = .scaleAspectFit
-        
-        self.layer.cornerRadius = 10
-        self.clipsToBounds = true
-        
-        self.backgroundColor = ColorHelper.babackgroundGrey
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
@@ -41,15 +49,17 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            nameLabel.leftAnchor.constraint(equalTo: leftAnchor),
-            nameLabel.rightAnchor.constraint(equalTo: rightAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
+    //MARK: - Set data
+    
     func setData(text: String?, imageData: Data?) {
-        nameLabel.text = text
+        titleLabel.text = text
         if imageData != nil {
             imageView.image = UIImage(data: imageData!)
         } else {

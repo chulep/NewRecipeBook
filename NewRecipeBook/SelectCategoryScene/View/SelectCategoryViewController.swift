@@ -61,7 +61,7 @@ class SelectCategoryViewController: UIViewController {
     //MARK: - Create UI
     
     private func setupNavBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", image: nil, target: self, action: #selector(tapToCancel))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NameHelper.SelectCategoryScene.backButtonText, image: nil, target: self, action: #selector(tapToCancel))
     }
     
     private func setupCollectionView() {
@@ -110,7 +110,7 @@ extension SelectCategoryViewController: UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifire, for: indexPath) as! BookCollectionViewCell
         let name = data?.displayRecipes[indexPath.row].name
         let image = data?.displayRecipes[indexPath.row].image
-        cell.setData(text: name, imageData: image)
+        cell.setData(title: name, imageData: image)
         cell.backgroundColor = .green
         return cell
     }

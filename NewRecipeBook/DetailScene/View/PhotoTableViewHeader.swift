@@ -14,7 +14,6 @@ class PhotoTableViewHeader: UITableViewHeaderFooterView {
     //MARK: - UI Element
     
     private lazy var imageView: UIImageView = {
-        $0.frame = bounds
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
         $0.backgroundColor = .white
@@ -26,6 +25,7 @@ class PhotoTableViewHeader: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         addSubview(imageView)
+        imageView.frame = bounds
     }
     
     //MARK: - Set Data

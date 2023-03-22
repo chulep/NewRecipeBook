@@ -99,8 +99,7 @@ class BasketViewController: UIViewController {
         interactor?.clearAll()
         data = nil
         tableView.reloadData()
-        helpLabel.isHidden(count: data?.count)
-        clearButton?.isHidden(count: data?.count)
+        isHidden(count: data?.count)
     }
 }
 
@@ -109,8 +108,7 @@ class BasketViewController: UIViewController {
 extension BasketViewController: BasketDisplayLogic {
     func displaying(data: BasketModels.FecthData.ViewModel) {
         self.data = data.ingredients
-        helpLabel.isHidden(count: data.ingredients.count)
-        clearButton?.isHidden(count: data.ingredients.count)
+        isHidden(count: data.ingredients.count)
         tableView.reloadData()
     }
 }
@@ -127,7 +125,7 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: BasketTableViewCell.identifire, for: indexPath) as! BasketTableViewCell
         let dataFromCell = data?[indexPath.row]
         cell.setData(text: dataFromCell)
-        cell.button.addTarget(self, action: #selector(tapDelete(_:)), for: .touchUpInside)
+        cell.button.addTarget(self, action: #selector(tapToDelete(_:)), for: .touchUpInside)
         return cell
     }
     
@@ -135,7 +133,7 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
         return 44
     }
     
-    @objc func tapDelete(_ sender: UIButton) {
+    @objc func tapToDelete(_ sender: UIButton) {
         let hitPoint = sender.convert(CGPoint.zero, to: tableView)
         if let indexPath = tableView.indexPathForRow(at: hitPoint) {
             interactor?.deleteItem(indexPath: indexPath)
@@ -144,5 +142,13 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.endUpdates()
         }
+        isHidden(count: data?.count)
+    }
+    
+    //MARK: - Support Hide Method
+    
+    private func isHidden(count: Int?) {
+        helpLabel.isHidden(count: count)
+        clearButton?.isHidden(count: count)
     }
 }

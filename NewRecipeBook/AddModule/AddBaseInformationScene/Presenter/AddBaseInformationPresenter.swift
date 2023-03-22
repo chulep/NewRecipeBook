@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddBaseInformationPresentationLogic {
-    func presentData(model: AddBaseInformationModels.FetchData.Response)
+    func presentData(data: AddBaseInformationModels.FetchData.Response)
 }
 
 class AddBaseInformationPresenter {
@@ -19,13 +19,11 @@ extension AddBaseInformationPresenter: AddBaseInformationPresentationLogic {
     
     //MARK: - Methods
     
-    func presentData(model: AddBaseInformationModels.FetchData.Response) {
-        var categoryString = [String]()
-        for i in NameHelper.allCategories {
-            categoryString.append(i.name)
+    func presentData(data: AddBaseInformationModels.FetchData.Response) {
+        let categoryString = data.category.map { category in
+            category.name
         }
-        let viewModel = AddBaseInformationModels.FetchData.ViewModel(category: categoryString)
-        viewController?.displaying(viewModel: viewModel)
+        viewController?.displaying(data: AddBaseInformationModels.FetchData.ViewModel(category: categoryString))
     }
 
 }

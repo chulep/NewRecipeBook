@@ -18,12 +18,10 @@ final class BookPresenter: BookPresentationLogic {
     //MARK: - Present Method
 
     func present(data: BookModels.FecthData.Response) {
-        var formattedRecipes = [BookModels.FecthData.ViewModel.FormattedRecipe]()
-        guard let recipes = data.recipes else { viewController?.displaying(data: BookModels.FecthData.ViewModel(displayRecipes: formattedRecipes)); return }
-        for i in recipes {
-            let formattedRecipe = BookModels.FecthData.ViewModel.FormattedRecipe(name: i.name, image: i.image)
-            formattedRecipes.append(formattedRecipe)
-        }
+        let formattedRecipes = data.recipes?.map({ recipe in
+            BookModels.FecthData.ViewModel.FormattedRecipe(name: recipe.name, image: recipe.image, dateId: recipe.dateId)
+        }) ?? [BookModels.FecthData.ViewModel.FormattedRecipe]()
+        
         viewController?.displaying(data: BookModels.FecthData.ViewModel(displayRecipes: formattedRecipes))
     }
 }

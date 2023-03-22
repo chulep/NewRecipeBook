@@ -24,7 +24,7 @@ class TitleTableViewHeader: UITableViewHeaderFooterView {
     
     //MARK: - Create UI
     
-    func createUI() {
+    private func createUI() {
         addSubview(nameLabel)
         nameLabel.frame = CGRect(x: 20, y: 0, width: bounds.width - 40, height: bounds.height)
         nameLabel.font = UIFont.boldSystemFont(ofSize: bounds.height / 2)

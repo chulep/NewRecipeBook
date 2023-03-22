@@ -10,12 +10,10 @@ import Foundation
 enum FavoriteModels {
 	enum FecthData {
         
-        // запрос от интерактора к презентеру
         struct Response {
             var recipes: [Recipe]?
         }
         
-        // запрос от презентера к вью
         struct ViewModel {
             struct FormattedRecipe {
                 var name: String?

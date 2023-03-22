@@ -31,7 +31,7 @@ class AddDescriptionSceneInteractor: AddDescriptionBusinessLogic, AddDescription
     func fetchData() {
         guard let data = saveDescriptionData?.description else { return }
         let model = AddDescriptionModels.FetchData.Response(description: data)
-        presenter?.presentData(model: model)
+        presenter?.presentData(data: model)
     }
     
     //MARK: - Save Data
