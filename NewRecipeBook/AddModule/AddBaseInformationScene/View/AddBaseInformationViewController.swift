@@ -159,6 +159,7 @@ final class AddBaseInformationViewController: UIViewController {
                 self.categoryButton.center.x -= 5
             }
         } else {
+            view.endEditing(true)
             interactor?.saveData(name: nameTextField.text ?? "", category: categoryButton.title(for: .normal) ?? "", image: saveImageData)
             router?.navigateToNextScene()
         }
@@ -169,7 +170,7 @@ final class AddBaseInformationViewController: UIViewController {
 
 extension AddBaseInformationViewController: AddBaseInformationDisplayLogic {
     func displaying(data: AddBaseInformationModels.FetchData.ViewModel) {
-        categoryAlertController = categoryAlertController.createCategoryAlert(name: data.category, completion: { [weak self] category in
+        categoryAlertController = UIAlertController.Factory.createCategoryAlert(name: data.category, completion: { [weak self] category in
             self?.categoryButton.setTitle(category, for: .normal)
             self?.categoryButton.setTitleColor(ColorHelper.orange, for: .normal)
         })

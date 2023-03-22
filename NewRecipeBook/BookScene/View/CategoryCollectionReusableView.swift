@@ -48,7 +48,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
             titleLabel.rightAnchor.constraint(equalTo: rightAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -63,7 +63,7 @@ class CategoryCollectionReusableView: UICollectionReusableView {
     }
     
     private func setupFlowLayout() -> UICollectionViewFlowLayout {
-        let cellSide = bounds.height - 55
+        let cellSide = bounds.height - 60
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.itemSize = CGSize(width: cellSide / 1.2, height: cellSide)

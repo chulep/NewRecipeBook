@@ -11,17 +11,16 @@ class InputCalculatorView: UIView {
     
     //MARK: - UI Elements
     
-    let inputTextField: UITextField = {
+    private let inputTextField: UITextField = {
         $0.backgroundColor = ColorHelper.babackgroundGrey
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .center
         $0.keyboardType = .numberPad
-        $0.becomeFirstResponder()
         $0.addTarget(nil, action: #selector(CalculatorViewController.editInput(_:)), for: .allEditingEvents)
         return $0
     }(UITextField())
     
-    let supportLabel: UILabel = {
+    private let supportLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = ColorHelper.lightGray
         return $0
@@ -62,5 +61,9 @@ class InputCalculatorView: UIView {
             supportLabel.rightAnchor.constraint(equalTo: rightAnchor),
             supportLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    func inputViewBecomeFirstResponder() {
+        inputTextField.becomeFirstResponder()
     }
 }

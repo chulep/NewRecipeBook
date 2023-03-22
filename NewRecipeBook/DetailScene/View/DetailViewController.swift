@@ -19,7 +19,8 @@ class DetailViewController: UIViewController {
     
     //MARK: - UI Elements
     
-    lazy var tableView = UITableView(frame: view.bounds, style: .grouped)
+    lazy private var tableView = UITableView(frame: view.bounds, style: .grouped)
+    lazy private var splashView = SplashBasketView(size: CGSize(width: view.bounds.width / 2, height: view.bounds.width / 4))
     
     // MARK: - Init
     
@@ -40,6 +41,7 @@ class DetailViewController: UIViewController {
         interactor?.fetchData()
         setupTableView()
         setupNavBar()
+        createUI()
     }
     
     //MARK: - Setup VIP
@@ -77,7 +79,7 @@ class DetailViewController: UIViewController {
     private func setupNavBar() {
         title = viewModel?.name
         navigationController?.navigationBar.tintColor = ColorHelper.white
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", image: nil, target: self, action: #selector(tapToCancel))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NameHelper.DetailScene.backButtonText, image: nil, target: self, action: #selector(tapToCancel))
         let raightButtonsArray = [
             UIBarButtonItem(image: UIImage(isFavorite: viewModel?.isFavorite), style: .done, target: self, action: #selector(tapToFavorite)),
             UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(tapToDelete))
@@ -85,30 +87,38 @@ class DetailViewController: UIViewController {
         navigationItem.rightBarButtonItems = raightButtonsArray
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        navigationItem.setBarColor(color: ColorHelper.orange)
+        navigationItem.setBarColor(backgroundColor: ColorHelper.orange, itemsColor: ColorHelper.white)
+    }
+    
+    private func createUI() {
+        view.addSubview(splashView)
+        splashView.center = view.center
     }
     
     //MARK: - Action Methods
     
-    @objc func tapToCancel() {
+    @objc private func tapToCancel() {
         router?.dismiss()
     }
     
-    @objc func tapToFavorite() {
+    @objc private func tapToFavorite() {
         interactor?.addToFavorite()
     }
     
-    @objc func tapToDelete() {
-        let alert = UIAlertController().deleteAlert {
+    @objc private func tapToDelete() {
+        let alert = UIAlertController.Factory.deleteAlert {
             self.interactor?.deleteRecipe()
             self.router?.dismiss()
         }
         present(alert, animated: true)
     }
     
-    @objc func tapToBasket() {
-        let alert = UIAlertController().basketCreateAlert { [weak self] in
+    @objc func tapToBasket(_ button: UIButton) {
+        let alert = UIAlertController.Factory.basketCreateAlert { [weak self] in
             self?.interactor?.saveBasket(ingredients: self?.viewModel?.ingredients)
+            button.setTitle(NameHelper.DetailScene.inBasketButtonText, for: .normal)
+            button.setImage(UIImage(systemName: "cart.fill.badge.plus"), for: .normal)
+            self?.splashView.animate()
         }
         present(alert, animated: true)
     }
@@ -172,11 +182,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             return header
         case 1:
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TitleTableViewHeader.identifire) as? TitleTableViewHeader
-            header?.setTitle(text: "Игредиенты", aligment: .justified)
+            header?.setTitle(text: NameHelper.DetailScene.ingredientHeaderText, aligment: .justified)
             return header
         case 2:
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TitleTableViewHeader.identifire) as? TitleTableViewHeader
-            header?.setTitle(text: "Процесс приготовления", aligment: .natural)
+            header?.setTitle(text: NameHelper.DetailScene.descriptionHeaderText, aligment: .natural)
             return header
         default:
             return nil

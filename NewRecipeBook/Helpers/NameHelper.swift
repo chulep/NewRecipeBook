@@ -81,20 +81,27 @@ struct NameHelper {
     //MARK: - Detail scene
     
     struct DetailScene {
-        static let backButtonText = "Назад"
+        static let backButtonText = "Закрыть"
         static let ingredientHeaderText = "Ингредиенты"
         static let basketButtonText = " В корзину"
+        static let inBasketButtonText = " В корзине"
         static let calculatorButtonText = " Калькулятор"
         static let descriptionHeaderText = "Процесс приготовления"
+        static let splashViewText = "Добавлено в корзину покупок"
     }
     
     //MARK: - Calculator scene
     
     struct CalculatorScene {
+        static let backButtonText = "Назад"
         static let titleText = "Калькулятор"
         static let inputViewText = "Грамм"
         static let cupViewText = "Стаканы"
         static let spoonViewText = "Столовые ложки"
         static let productSegmentText = ["Мука", "Сахар", "Крупа"]
+    }
+    
+    struct SelectCategoryScene {
+        static let backButtonText = "Назад"
     }
 }

@@ -29,7 +29,9 @@ final class BookInteractor: BookBusinessLogic, BookDataStore {
         CoreDataManager.execute.getAllDataTask { (result: Result<[Recipe]?, Error>) in
             switch result {
             case .success(let data):
-                self.data = data
+                self.data = data?.sorted { s1, s2 in
+                    s1.dateId! > s2.dateId!
+                }
             case .failure(let error):
                 print(error)
             }

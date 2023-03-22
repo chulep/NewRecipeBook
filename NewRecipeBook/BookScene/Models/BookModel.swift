@@ -23,6 +23,7 @@ final class BookModels {
             struct FormattedRecipe {
                 var name: String?
                 var image: Data?
+                var dateId: String?
             }
             var displayRecipes: [FormattedRecipe]
         }

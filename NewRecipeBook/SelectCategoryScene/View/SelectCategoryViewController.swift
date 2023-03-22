@@ -61,7 +61,7 @@ class SelectCategoryViewController: UIViewController {
     //MARK: - Create UI
     
     private func setupNavBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", image: nil, target: self, action: #selector(tapToCancel))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: NameHelper.SelectCategoryScene.backButtonText, image: nil, target: self, action: #selector(tapToCancel))
     }
     
     private func setupCollectionView() {

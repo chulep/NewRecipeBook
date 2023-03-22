@@ -11,7 +11,7 @@ class ResultCalculatorView: UIView {
     
     //MARK: - UI Elements
     
-    let resultLabel: UILabel = {
+    private let resultLabel: UILabel = {
         $0.backgroundColor = ColorHelper.babackgroundGrey
         $0.text = "0"
         $0.textAlignment = .center
@@ -19,7 +19,7 @@ class ResultCalculatorView: UIView {
         return $0
     }(UILabel())
     
-    let supportLabel: UILabel = {
+    private let supportLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = ColorHelper.lightGray
         return $0
@@ -42,9 +42,9 @@ class ResultCalculatorView: UIView {
     //MARK: - Create UI
 
     private func createUI() {
+        backgroundColor = ColorHelper.lightGray
         layer.cornerRadius = ConstantHelper.radius
         clipsToBounds = true
-        backgroundColor = ColorHelper.lightGray
         
         addSubview(resultLabel)
         addSubview(supportLabel)
@@ -65,6 +65,10 @@ class ResultCalculatorView: UIView {
     //MARK: - Set Data
     
     func setData(result: String) {
-        resultLabel.text = result
+        var text = result
+        if text.last == "0" {
+            text.removeLast(2)
+        }
+        resultLabel.text = text
     }
 }

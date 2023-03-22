@@ -45,6 +45,11 @@ class CalculatorViewController: UIViewController {
         setupNavBar()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        inputNumberView.inputViewBecomeFirstResponder()
+    }
+    
     //MARK: - Setuo VIP
 
     private func setup() {
@@ -97,7 +102,8 @@ class CalculatorViewController: UIViewController {
         title = NameHelper.CalculatorScene.titleText
         navigationController?.navigationBar.tintColor = ColorHelper.white
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.setBarColor(color: UIColor.orange)
+        navigationItem.setBarColor(backgroundColor: ColorHelper.orange, itemsColor: ColorHelper.white)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: NameHelper.CalculatorScene.backButtonText, style: .plain, target: nil, action: nil)
     }
     
     //MARK: - Action Methods

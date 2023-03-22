@@ -110,6 +110,7 @@ final class AddIngredientViewController: UIViewController {
         title = NameHelper.AddModule.IngredientScene.titleText
         let image = UIImage(systemName: "plus")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: image, target: self, action: #selector(tapToNewIngredient))
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
     }
     
     private func setupTableView() {

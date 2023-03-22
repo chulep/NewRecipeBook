@@ -13,18 +13,18 @@ class ButtonsTableViewFooter: UITableViewHeaderFooterView {
     
     //MARK: - UI Elements
 
-    let basketButton: UIButton = {
+    private let basketButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setImage(UIImage(systemName: "cart"), for: .normal)
         $0.setTitle(NameHelper.DetailScene.basketButtonText, for: .normal)
         $0.backgroundColor = ColorHelper.orange
         $0.layer.cornerRadius = ConstantHelper.radius
-        $0.addTarget(nil, action: #selector(DetailViewController.tapToBasket), for: .touchUpInside)
+        $0.addTarget(nil, action: #selector(DetailViewController.tapToBasket(_:)), for: .touchUpInside)
         $0.tintColor = ColorHelper.white
         return $0
     }(UIButton())
     
-    let calculatorButton: UIButton = {
+    private let calculatorButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setImage(UIImage(systemName: "square.grid.3x3"), for: .normal)
         $0.setTitle(NameHelper.DetailScene.calculatorButtonText, for: .normal)
@@ -44,7 +44,7 @@ class ButtonsTableViewFooter: UITableViewHeaderFooterView {
     
     //MARK: - Create UI
     
-    func createUI() {
+    private func createUI() {
         addSubview(basketButton)
         addSubview(calculatorButton)
 

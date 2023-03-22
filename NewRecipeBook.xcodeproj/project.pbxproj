@@ -10,6 +10,7 @@
 		5D1B7CB929B4654A00D9145A /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B7CB829B4654A00D9145A /* UISearchBar+Extensions.swift */; };
 		5D2F18C62989743B009FDE69 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F18C52989743B009FDE69 /* CategoryCollectionViewCell.swift */; };
 		5D38493E29AB981A00FBC5F1 /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D38493D29AB981A00FBC5F1 /* UINavigationItem+Extensions.swift */; };
+		5D54068229C8F7E80024D96C /* SplashBasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D54068129C8F7E80024D96C /* SplashBasketView.swift */; };
 		5D56058E29ADDF6A00263265 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D56058D29ADDF6A00263265 /* UILabel+Extensions.swift */; };
 		5D71856529701D08006E5615 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D71856429701D08006E5615 /* CoreDataStack.swift */; };
 		5D7185672970672D006E5615 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7185662970672D006E5615 /* CoreDataManager.swift */; };
@@ -89,6 +90,7 @@
 		5D1B7CB829B4654A00D9145A /* UISearchBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extensions.swift"; sourceTree = "<group>"; };
 		5D2F18C52989743B009FDE69 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D38493D29AB981A00FBC5F1 /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
+		5D54068129C8F7E80024D96C /* SplashBasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBasketView.swift; sourceTree = "<group>"; };
 		5D56058D29ADDF6A00263265 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		5D71856429701D08006E5615 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5D7185662970672D006E5615 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				5D8C3B56297A6E1F00888CE3 /* DescriptionTableViewHeader.swift */,
 				5DFC59AB29770D360059C411 /* PhotoTableViewHeader.swift */,
 				5D83BF20298FE45F00435E59 /* ButtonsTableViewFooter.swift */,
+				5D54068129C8F7E80024D96C /* SplashBasketView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -854,6 +857,7 @@
 				5DBBA3B8296706FA00E1700F /* AddRecipeInteractor.swift in Sources */,
 				5D83BF28298FF47400435E59 /* CalculatorPresenter.swift in Sources */,
 				5DA7D861297C35D600D96B31 /* SelectCategoryInteractor.swift in Sources */,
+				5D54068229C8F7E80024D96C /* SplashBasketView.swift in Sources */,
 				5DFC59A8297709B00059C411 /* DetailModel.swift in Sources */,
 				5DB73412296ABF8300A80440 /* AddDescriptionRouter.swift in Sources */,
 				5DBBA3892966D33700E1700F /* SceneDelegate.swift in Sources */,

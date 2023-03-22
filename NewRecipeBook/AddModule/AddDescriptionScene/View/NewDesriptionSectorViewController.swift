@@ -14,8 +14,9 @@ final class NewDesriptionSectorViewController: UIViewController {
     private var maxHeight: CGFloat = 50
     private var isOversized = false {
         didSet {
+            textView.bottomAnchor.constraint(equalTo: confirmButton.topAnchor, constant: -5).isActive = true
+            textView.setNeedsUpdateConstraints()
             textView.isScrollEnabled = isOversized
-            textView.layoutIfNeeded()
         }
     }
     
@@ -24,14 +25,13 @@ final class NewDesriptionSectorViewController: UIViewController {
     private var confirmButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle(NameHelper.AddModule.DescriptionScene.NewDescriptionView.addButtonText, for: .normal)
-        $0.backgroundColor = .green
+        $0.backgroundColor = ColorHelper.orange
         $0.addTarget(nil, action: #selector(addContinue), for: .touchUpInside)
         $0.layer.cornerRadius = ConstantHelper.radius
         return $0
     }(UIButton())
     
     private var textView: UITextView = {
-
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = false
         $0.layer.borderWidth = 1
@@ -40,7 +40,7 @@ final class NewDesriptionSectorViewController: UIViewController {
         $0.backgroundColor = ColorHelper.babackgroundGrey
         $0.layer.cornerRadius = ConstantHelper.radius
         return $0
-    } (UITextView())
+    }(UITextView())
     
     //MARK: - Lifecycle
     
@@ -59,7 +59,7 @@ final class NewDesriptionSectorViewController: UIViewController {
         view.addSubview(confirmButton)
         view.addSubview(textView)
         
-        textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         textView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         textView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
@@ -92,6 +92,7 @@ final class NewDesriptionSectorViewController: UIViewController {
 //MARK: - TextView Delegate
 
 extension NewDesriptionSectorViewController: UITextViewDelegate {
+    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         return true
@@ -100,14 +101,11 @@ extension NewDesriptionSectorViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if textView.contentSize.height >= maxHeight {
             isOversized = true
-            self.textView.heightAnchor.constraint(equalToConstant: maxHeight).isActive = true
         }
     }
     
     @objc private func keyboardWillShow(notification: Notification) {
-        var userInfo = notification.userInfo!
-        let keyboardFrame = userInfo.removeValue(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue
-        maxHeight = view.bounds.height - keyboardFrame.cgRectValue.height - 125
+        maxHeight = confirmButton.frame.origin.y - 100
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 }

@@ -189,7 +189,7 @@ extension BookViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension BookViewController: UICollectionViewDelegateFlowLayout {
     
-    // header & footer
+    // headers & footers
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch indexPath.section {
         case 0:
@@ -205,7 +205,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    // size
+    // headers sizes
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if isSearch {
             return CGSize(width: view.bounds.width, height: 0)
@@ -218,7 +218,6 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
             }
         }
     }
-    
 }
 
 //MARK: - Select Category Delegate

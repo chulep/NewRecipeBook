@@ -19,7 +19,7 @@ final class BookPresenter: BookPresentationLogic {
 
     func present(data: BookModels.FecthData.Response) {
         let formattedRecipes = data.recipes?.map({ recipe in
-            BookModels.FecthData.ViewModel.FormattedRecipe(name: recipe.name, image: recipe.image)
+            BookModels.FecthData.ViewModel.FormattedRecipe(name: recipe.name, image: recipe.image, dateId: recipe.dateId)
         }) ?? [BookModels.FecthData.ViewModel.FormattedRecipe]()
         
         viewController?.displaying(data: BookModels.FecthData.ViewModel(displayRecipes: formattedRecipes))
