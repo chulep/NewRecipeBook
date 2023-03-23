@@ -18,6 +18,22 @@ struct NameHelper {
         let imageName: String
     }
     
+    //MARK: - TabBar
+    
+    struct TabBar {
+        static let bookTitle = "Рецепты"
+        static let bookImage = "book"
+        static let bookSelectImage = "book.fill"
+        
+        static let favotiteTitle = "Избранное"
+        static let favoriteImage = "heart"
+        static let favoriteSelectImage = "heart.fill"
+        
+        static let basketTitle = "Корзина"
+        static let basketImage = "cart"
+        static let basketSelectImage = "cart.fill"
+    }
+    
     //MARK: - Book scene
     
     struct BookScene {
@@ -42,6 +58,7 @@ struct NameHelper {
     //MARK: - Add Module
     
     enum AddModule {
+        
         struct BaseInformationScene {
             static let cancelButtonText = "Отмена"
             static let titleText = "Новый рецепт"
