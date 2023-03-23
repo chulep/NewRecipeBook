@@ -1,15 +1,15 @@
 //
-//  RecipeCollectionViewCell.swift
+//  FavoriteCollectionViewCell.swift
 //  NewRecipeBook
 //
-//  Created by Pavel Schulepov on 05.01.2023.
+//  Created by Pavel Schulepov on 23.03.2023.
 //
 
 import UIKit
 
-class BookCollectionViewCell: UICollectionViewCell {
+class FavoriteCollectionViewCell: UICollectionViewCell {
     
-    static let identifire = "bookCell"
+    static let identifire = "favoriteCell"
     
     //MARK: - UI Elements
     
@@ -72,5 +72,4 @@ class BookCollectionViewCell: UICollectionViewCell {
             imageView.image = UIImage(systemName: "camera")
         }
     }
-    
 }

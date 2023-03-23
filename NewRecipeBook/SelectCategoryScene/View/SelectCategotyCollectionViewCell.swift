@@ -1,15 +1,15 @@
 //
-//  RecipeCollectionViewCell.swift
+//  SelectCategotyCollectionViewcell.swift
 //  NewRecipeBook
 //
-//  Created by Pavel Schulepov on 05.01.2023.
+//  Created by Pavel Schulepov on 23.03.2023.
 //
 
 import UIKit
 
-class BookCollectionViewCell: UICollectionViewCell {
+class SelectCategotyCollectionViewCell: UICollectionViewCell {
     
-    static let identifire = "bookCell"
+    static let identifire = "selectCategoryCell"
     
     //MARK: - UI Elements
     
@@ -74,3 +74,4 @@ class BookCollectionViewCell: UICollectionViewCell {
     }
     
 }
+

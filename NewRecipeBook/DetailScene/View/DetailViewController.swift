@@ -72,8 +72,8 @@ class DetailViewController: UIViewController {
         tableView.register(PhotoTableViewHeader.self, forHeaderFooterViewReuseIdentifier: PhotoTableViewHeader.identifire)
         tableView.register(TitleTableViewHeader.self, forHeaderFooterViewReuseIdentifier: TitleTableViewHeader.identifire)
         tableView.register(ButtonsTableViewFooter.self, forHeaderFooterViewReuseIdentifier: ButtonsTableViewFooter.identifire)
-        tableView.register(AddTableViewCell.self, forCellReuseIdentifier: AddTableViewCell.identifire)
-        tableView.register(AddDescriptionTableViewCell.self, forCellReuseIdentifier: AddDescriptionTableViewCell.identifire)
+        tableView.register(IngredientTableViewCell.self, forCellReuseIdentifier: IngredientTableViewCell.identifire)
+        tableView.register(DesctriptionTableViewCell.self, forCellReuseIdentifier: DesctriptionTableViewCell.identifire)
     }
     
     private func setupNavBar() {
@@ -160,11 +160,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AddTableViewCell.identifire, for: indexPath) as! AddTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: IngredientTableViewCell.identifire, for: indexPath) as! IngredientTableViewCell
             cell.setData(text: viewModel?.ingredients?[indexPath.row])
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AddDescriptionTableViewCell.identifire) as! AddDescriptionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: DesctriptionTableViewCell.identifire) as! DesctriptionTableViewCell
             let descriptionCellData = viewModel?.description?[indexPath.row]
             cell.setData(text: descriptionCellData, indexPath: indexPath)
             return cell

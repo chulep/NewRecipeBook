@@ -68,7 +68,7 @@ class SelectCategoryViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifire)
+        collectionView.register(SelectCategotyCollectionViewCell.self, forCellWithReuseIdentifier: SelectCategotyCollectionViewCell.identifire)
     }
     
     private func createFlowLayout() -> UICollectionViewFlowLayout {
@@ -107,7 +107,7 @@ extension SelectCategoryViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifire, for: indexPath) as! BookCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCategotyCollectionViewCell.identifire, for: indexPath) as! SelectCategotyCollectionViewCell
         let name = data?.displayRecipes[indexPath.row].name
         let image = data?.displayRecipes[indexPath.row].image
         cell.setData(title: name, imageData: image)
