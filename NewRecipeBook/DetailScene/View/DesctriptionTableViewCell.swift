@@ -1,15 +1,15 @@
 //
-//  AddDescriptionTableViewCell.swift
+//  DesctriptionTableViewCell.swift
 //  NewRecipeBook
 //
-//  Created by Pavel Schulepov on 09.01.2023.
+//  Created by Pavel Schulepov on 23.03.2023.
 //
 
 import UIKit
 
-class AddDescriptionTableViewCell: UITableViewCell {
+class DesctriptionTableViewCell: UITableViewCell {
     
-    static let identifire = "addDescriptionCell"
+    static let identifire = "descriptionCell"
     
     //MARK: - UI Elements
     
@@ -96,6 +96,4 @@ class AddDescriptionTableViewCell: UITableViewCell {
         super.setSelected(false, animated: false)
         
     }
-
-    
 }

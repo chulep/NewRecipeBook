@@ -23,13 +23,13 @@ class SplashBasketView: UIView {
     
     convenience init(size: CGSize) {
         self.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        addSubview(label)
     }
     
     //MARK: - UI
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        addSubview(label)
         label.frame = bounds
         isHidden = true
         backgroundColor = ColorHelper.orange

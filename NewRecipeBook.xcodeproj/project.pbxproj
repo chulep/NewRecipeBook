@@ -50,6 +50,10 @@
 		5DA7D861297C35D600D96B31 /* SelectCategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7D85C297C35D600D96B31 /* SelectCategoryInteractor.swift */; };
 		5DA7D862297C35D600D96B31 /* SelectCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7D85D297C35D600D96B31 /* SelectCategoryModel.swift */; };
 		5DA8DCD929B3273700C16E2D /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA8DCD829B3273700C16E2D /* UIBarButtonItem+Extensions.swift */; };
+		5DA9C24729CCA132000AC5B9 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9C24629CCA132000AC5B9 /* FavoriteCollectionViewCell.swift */; };
+		5DA9C24929CCA3B2000AC5B9 /* SelectCategotyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9C24829CCA3B2000AC5B9 /* SelectCategotyCollectionViewCell.swift */; };
+		5DA9C24B29CCA54D000AC5B9 /* IngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9C24A29CCA54D000AC5B9 /* IngredientTableViewCell.swift */; };
+		5DA9C24D29CCA5B2000AC5B9 /* DesctriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA9C24C29CCA5B2000AC5B9 /* DesctriptionTableViewCell.swift */; };
 		5DB73411296ABF8300A80440 /* AddDescriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7340C296ABF8300A80440 /* AddDescriptionPresenter.swift */; };
 		5DB73412296ABF8300A80440 /* AddDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7340D296ABF8300A80440 /* AddDescriptionRouter.swift */; };
 		5DB73413296ABF8300A80440 /* AddDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7340E296ABF8300A80440 /* AddDescriptionViewController.swift */; };
@@ -130,6 +134,10 @@
 		5DA7D85C297C35D600D96B31 /* SelectCategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryInteractor.swift; sourceTree = "<group>"; };
 		5DA7D85D297C35D600D96B31 /* SelectCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryModel.swift; sourceTree = "<group>"; };
 		5DA8DCD829B3273700C16E2D /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
+		5DA9C24629CCA132000AC5B9 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		5DA9C24829CCA3B2000AC5B9 /* SelectCategotyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategotyCollectionViewCell.swift; sourceTree = "<group>"; };
+		5DA9C24A29CCA54D000AC5B9 /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableViewCell.swift; sourceTree = "<group>"; };
+		5DA9C24C29CCA5B2000AC5B9 /* DesctriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesctriptionTableViewCell.swift; sourceTree = "<group>"; };
 		5DB7340C296ABF8300A80440 /* AddDescriptionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionPresenter.swift; sourceTree = "<group>"; };
 		5DB7340D296ABF8300A80440 /* AddDescriptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionRouter.swift; sourceTree = "<group>"; };
 		5DB7340E296ABF8300A80440 /* AddDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionViewController.swift; sourceTree = "<group>"; };
@@ -356,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				5DA5C279298C011300833ED9 /* FavoriteViewController.swift */,
+				5DA9C24629CCA132000AC5B9 /* FavoriteCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -513,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				5DA7D85B297C35D600D96B31 /* SelectCategoryViewController.swift */,
+				5DA9C24829CCA3B2000AC5B9 /* SelectCategotyCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -716,6 +726,8 @@
 				5DFC59AB29770D360059C411 /* PhotoTableViewHeader.swift */,
 				5D83BF20298FE45F00435E59 /* ButtonsTableViewFooter.swift */,
 				5D54068129C8F7E80024D96C /* SplashBasketView.swift */,
+				5DA9C24A29CCA54D000AC5B9 /* IngredientTableViewCell.swift */,
+				5DA9C24C29CCA5B2000AC5B9 /* DesctriptionTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -825,6 +837,8 @@
 				5DBBA3B32966FF8600E1700F /* BookCollectionViewCell.swift in Sources */,
 				5DBBA3BC2967071F00E1700F /* AddIngredientModel.swift in Sources */,
 				5DA7D85E297C35D600D96B31 /* SelectCategoryPresenter.swift in Sources */,
+				5DA9C24B29CCA54D000AC5B9 /* IngredientTableViewCell.swift in Sources */,
+				5DA9C24929CCA3B2000AC5B9 /* SelectCategotyCollectionViewCell.swift in Sources */,
 				5DA5C27D298C011300833ED9 /* FavoriteRouter.swift in Sources */,
 				5D83BF21298FE45F00435E59 /* ButtonsTableViewFooter.swift in Sources */,
 				5DC0D465296C4A2C00424C89 /* AddDescriptionTableViewCell.swift in Sources */,
@@ -849,6 +863,7 @@
 				5DB73414296ABF8300A80440 /* AddDescriptionInteractor.swift in Sources */,
 				5D720D79296811840009693B /* AddTableViewCell.swift in Sources */,
 				5D38493E29AB981A00FBC5F1 /* UINavigationItem+Extensions.swift in Sources */,
+				5DA9C24D29CCA5B2000AC5B9 /* DesctriptionTableViewCell.swift in Sources */,
 				5DBBA3872966D33700E1700F /* AppDelegate.swift in Sources */,
 				5DFC59A4297709B00059C411 /* DetailPresenter.swift in Sources */,
 				5DBBA3A62966D6A300E1700F /* BookPresenter.swift in Sources */,
@@ -878,6 +893,7 @@
 				5DBBA3B6296706EE00E1700F /* AddIngredientViewController.swift in Sources */,
 				5D81C746296EB3BE009A0D46 /* AddBaseInformationViewController.swift in Sources */,
 				5D89E175298E9F5900FB51CF /* BasketTableViewCell.swift in Sources */,
+				5DA9C24729CCA132000AC5B9 /* FavoriteCollectionViewCell.swift in Sources */,
 				5DD2E8262983EE2000E63CEB /* ColorHelper.swift in Sources */,
 				5D79ACB02976815D00EAD25E /* CategoryCollectionReusableView.swift in Sources */,
 				5DB73411296ABF8300A80440 /* AddDescriptionPresenter.swift in Sources */,

@@ -80,7 +80,7 @@ class FavoriteViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: BookCollectionViewCell.identifire)
+        collectionView.register(FavoriteCollectionViewCell.self, forCellWithReuseIdentifier: FavoriteCollectionViewCell.identifire)
     }
     
     private func createFlowLayout() -> UICollectionViewFlowLayout {
@@ -112,7 +112,7 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifire, for: indexPath) as! BookCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifire, for: indexPath) as! FavoriteCollectionViewCell
         let name = data?.displayRecipes[indexPath.row].name
         let image = data?.displayRecipes[indexPath.row].image
         cell.setData(title: name, imageData: image)
