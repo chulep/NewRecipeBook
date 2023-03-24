@@ -10,5 +10,4 @@ import Foundation
 struct ConstantHelper {
     static let radius: CGFloat = 8
     static let basketKey = "basket"
-    static let settingsKey = "settings"
 }

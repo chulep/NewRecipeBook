@@ -118,7 +118,27 @@ struct NameHelper {
         static let productSegmentText = ["Мука", "Сахар", "Крупа"]
     }
     
+    //MARK: - Select Category scene
     struct SelectCategoryScene {
         static let backButtonText = "Назад"
+    }
+    
+    //MARK: - Alerts
+    enum Alert {
+        struct Category {
+            static let titleText = "Выберите категорию:"
+        }
+        
+        struct InBasket {
+            static let titleText = "Добавить в корзину?"
+            static let confirmButtonText = "OK"
+            static let cancelButtonText = "Отмена"
+        }
+        
+        struct Delete {
+            static let titleText = "Удалить рецепт?"
+            static let confirmButtonText = "OK"
+            static let cancelButtonText = "Отмена"
+        }
     }
 }

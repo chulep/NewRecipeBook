@@ -170,7 +170,7 @@ final class AddBaseInformationViewController: UIViewController {
 
 extension AddBaseInformationViewController: AddBaseInformationDisplayLogic {
     func displaying(data: AddBaseInformationModels.FetchData.ViewModel) {
-        categoryAlertController = UIAlertController.Factory.createCategoryAlert(name: data.category, completion: { [weak self] category in
+        categoryAlertController = UIAlertController.Factory.categoryAlert(names: data.category, completion: { [weak self] category in
             self?.categoryButton.setTitle(category, for: .normal)
             self?.categoryButton.setTitleColor(ColorHelper.orange, for: .normal)
         })
