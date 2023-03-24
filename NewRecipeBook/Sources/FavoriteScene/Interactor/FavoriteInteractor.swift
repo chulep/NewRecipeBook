@@ -23,12 +23,12 @@ class FavoriteInteractor: FavoriteBusinessLogic, FavoriteDataStore {
     //MARK: - Fetch Data
     
     func fetchData() {
-        CoreDataManager.execute.getFavoriteDataTask { (result: Result<[Recipe]?, Error>) in
+        CoreDataManager.execute.getAllDataTask { (result: Result<[Recipe]?, Error>) in
             switch result {
             case .success(let data):
-                self.recipes = data
-            case .failure(let error):
-                print(error)
+                self.recipes = data?.filter { $0.isFavorite == true }
+            case .failure(_):
+                break
             }
         }
         presenter?.presentData(data: FavoriteModels.FecthData.Response(recipes: recipes))

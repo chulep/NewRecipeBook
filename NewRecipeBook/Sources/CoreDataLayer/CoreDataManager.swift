@@ -30,28 +30,9 @@ class CoreDataManager {
         }
     }
     
-    //MARK: - Get favorite recipes
-    
-    func getFavoriteDataTask(completion: @escaping (Result<[Recipe]?, Error>) -> Void) {
-        let context = coreDataStack.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-        let predicate = NSPredicate(format: "isFavorite == %@", NSNumber(value: true))
-        fetchRequest.predicate = predicate
-        
-        do {
-            print("Export CoreData Favorite DONE")
-            let data = try context.fetch(fetchRequest)
-            completion(.success(data))
-        } catch {
-            print("Export CoreData Favorite ERROR")
-            completion(.failure(error))
-        }
-    }
-    
     //MARK: - Save new recipe
     
     func saveDataTask(data: AddDescriptionModels.SaveData.Request) {
-        //guard let data = data else { return completion(CoreDataError.saveFailed) }
         let context = coreDataStack.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Recipe", in: context)
         let object = NSManagedObject(entity: entity!, insertInto: context) as? Recipe
