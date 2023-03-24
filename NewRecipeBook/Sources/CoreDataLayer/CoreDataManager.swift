@@ -78,7 +78,7 @@ class CoreDataManager {
             try context.save()
             print("SAVE FAVORITE")
         } catch {
-            print("EDIT ERROR")
+            print("EDIT FAVORITE ERROR")
         }
     }
     
@@ -96,7 +96,7 @@ class CoreDataManager {
             try context.save()
             print("DELETE DONE")
         } catch {
-            print("DELETE CoreData ERROR")
+            print("DELETE ERROR")
         }
     }
     
