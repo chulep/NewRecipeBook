@@ -567,6 +567,44 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		5DA9C24E29CCAF50000AC5B9 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5DBBA3942966D33800E1700F /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		5DA9C24F29CCB3FA000AC5B9 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5DBBA3862966D33700E1700F /* AppDelegate.swift */,
+				5DBBA3882966D33700E1700F /* SceneDelegate.swift */,
+				5DA8DCDA29B3374600C16E2D /* TabBar */,
+				5DBBA3A02966D65000E1700F /* BookScene */,
+				5DA5C276298C00E100833ED9 /* FavoriteScene */,
+				5D7CDFD8298D91A80010D2E2 /* BasketScene */,
+				5DB7340A296AB83400A80440 /* AddModule */,
+				5DFC5999297709610059C411 /* DetailScene */,
+				5D83BF22298FF44500435E59 /* CalculatorScene */,
+				5DA7D858297C356E00D96B31 /* SelectCategoryScene */,
+				5DA9C24E29CCAF50000AC5B9 /* LaunchScreen */,
+				5DBBA39F2966D62700E1700F /* CoreDataLayer */,
+				5D720D752968017E0009693B /* Extensions */,
+				5D81C74E296F1CF9009A0D46 /* Helpers */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5DA9C25129CCB7D8000AC5B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5DBBA3922966D33800E1700F /* Assets.xcassets */,
+				5DBBA3972966D33800E1700F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5DB7340A296AB83400A80440 /* AddModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,22 +646,8 @@
 		5DBBA3852966D33700E1700F /* NewRecipeBook */ = {
 			isa = PBXGroup;
 			children = (
-				5DBBA3862966D33700E1700F /* AppDelegate.swift */,
-				5DBBA3882966D33700E1700F /* SceneDelegate.swift */,
-				5DA8DCDA29B3374600C16E2D /* TabBar */,
-				5DBBA3A02966D65000E1700F /* BookScene */,
-				5DA5C276298C00E100833ED9 /* FavoriteScene */,
-				5D7CDFD8298D91A80010D2E2 /* BasketScene */,
-				5DB7340A296AB83400A80440 /* AddModule */,
-				5DFC5999297709610059C411 /* DetailScene */,
-				5D83BF22298FF44500435E59 /* CalculatorScene */,
-				5DA7D858297C356E00D96B31 /* SelectCategoryScene */,
-				5DBBA39F2966D62700E1700F /* CoreDataLayer */,
-				5D720D752968017E0009693B /* Extensions */,
-				5D81C74E296F1CF9009A0D46 /* Helpers */,
-				5DBBA3922966D33800E1700F /* Assets.xcassets */,
-				5DBBA3942966D33800E1700F /* LaunchScreen.storyboard */,
-				5DBBA3972966D33800E1700F /* Info.plist */,
+				5DA9C25129CCB7D8000AC5B9 /* Resources */,
+				5DA9C24F29CCB3FA000AC5B9 /* Sources */,
 			);
 			path = NewRecipeBook;
 			sourceTree = "<group>";
@@ -1053,7 +1077,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BTD5KN5SP;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewRecipeBook/Info.plist;
+				INFOPLIST_FILE = NewRecipeBook/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1080,7 +1104,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BTD5KN5SP;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewRecipeBook/Info.plist;
+				INFOPLIST_FILE = NewRecipeBook/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

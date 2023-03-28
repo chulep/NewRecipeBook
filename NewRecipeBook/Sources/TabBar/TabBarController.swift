@@ -21,20 +21,20 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     private func createControllers() {
         let bookViewController = BookViewController()
-        bookViewController.tabBarItem.title = "Рецепты"
-        bookViewController.tabBarItem.image = UIImage(systemName: "book")
-        bookViewController.tabBarItem.selectedImage = UIImage(systemName: "book.fill")
+        bookViewController.tabBarItem.title = NameHelper.TabBar.bookTitle
+        bookViewController.tabBarItem.image = UIImage(systemName: NameHelper.TabBar.bookImage)
+        bookViewController.tabBarItem.selectedImage = UIImage(systemName: NameHelper.TabBar.bookSelectImage)
         let bookNavController = UINavigationController(rootViewController: bookViewController)
         
         let favoriteViewController = FavoriteViewController()
-        favoriteViewController.tabBarItem.title = "Избранное"
-        favoriteViewController.tabBarItem.image = UIImage(systemName: "heart")
-        favoriteViewController.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
+        favoriteViewController.tabBarItem.title = NameHelper.TabBar.favotiteTitle
+        favoriteViewController.tabBarItem.image = UIImage(systemName: NameHelper.TabBar.favoriteImage)
+        favoriteViewController.tabBarItem.selectedImage = UIImage(systemName: NameHelper.TabBar.favoriteSelectImage)
         
         let basketViewController = BasketViewController()
-        basketViewController.tabBarItem.title = "Корзина"
-        basketViewController.tabBarItem.image = UIImage(systemName: "cart")
-        basketViewController.tabBarItem.selectedImage = UIImage(systemName: "cart.fill")
+        basketViewController.tabBarItem.title = NameHelper.TabBar.basketTitle
+        basketViewController.tabBarItem.image = UIImage(systemName: NameHelper.TabBar.basketImage)
+        basketViewController.tabBarItem.selectedImage = UIImage(systemName: NameHelper.TabBar.basketSelectImage)
         let basketNavController = UINavigationController(rootViewController: basketViewController)
         
         viewControllers = [

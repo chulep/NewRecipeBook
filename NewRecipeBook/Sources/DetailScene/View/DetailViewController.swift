@@ -114,7 +114,7 @@ class DetailViewController: UIViewController {
     }
     
     @objc func tapToBasket(_ button: UIButton) {
-        let alert = UIAlertController.Factory.basketCreateAlert { [weak self] in
+        let alert = UIAlertController.Factory.inBasketAlert { [weak self] in
             self?.interactor?.saveBasket(ingredients: self?.viewModel?.ingredients)
             button.setTitle(NameHelper.DetailScene.inBasketButtonText, for: .normal)
             button.setImage(UIImage(systemName: "cart.fill.badge.plus"), for: .normal)
