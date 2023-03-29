@@ -12,6 +12,7 @@ protocol DetailBusinessLogic {
     func addToFavorite()
     func saveBasket(ingredients: [String]?)
     func deleteRecipe()
+    func shareRecipe()
 }
 
 protocol DetailDataStore {
@@ -59,5 +60,12 @@ class DetailInteractor: DetailBusinessLogic, DetailDataStore {
     
     func deleteRecipe() {
         CoreDataManager.execute.deleteTask(id: data?.dateId)
+    }
+    
+    //MARK: - Share Recipe
+    
+    func shareRecipe() {
+        guard let data = data else { return }
+        presenter?.presentShare(data: DetailModels.FecthData.Response(recipe: data))
     }
 }

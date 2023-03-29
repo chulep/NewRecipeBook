@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetailDisplayLogic: AnyObject {
     func displaying(data: DetailModels.FecthData.ViewModel)
+    func shareDisplaying(data: DetailModels.FecthData.ShareViewModel)
 }
 
 class DetailViewController: UIViewController {
@@ -82,7 +83,8 @@ class DetailViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NameHelper.DetailScene.backButtonText, image: nil, target: self, action: #selector(tapToCancel))
         let raightButtonsArray = [
             UIBarButtonItem(image: UIImage(isFavorite: viewModel?.isFavorite), style: .done, target: self, action: #selector(tapToFavorite)),
-            UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(tapToDelete))
+            UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(tapToDelete)),
+            UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .done, target: self, action: #selector(tapToShare))
         ]
         navigationItem.rightBarButtonItems = raightButtonsArray
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -113,6 +115,10 @@ class DetailViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    @objc func tapToShare() {
+        interactor?.shareRecipe()
+    }
+    
     @objc func tapToBasket(_ button: UIButton) {
         let alert = UIAlertController.Factory.inBasketAlert { [weak self] in
             self?.interactor?.saveBasket(ingredients: self?.viewModel?.ingredients)
@@ -135,6 +141,11 @@ extension DetailViewController: DetailDisplayLogic {
         self.viewModel = data
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(isFavorite: data.isFavorite), style: .done, target: self, action: #selector(tapToFavorite))
         tableView.reloadData()
+    }
+    
+    func shareDisplaying(data: DetailModels.FecthData.ShareViewModel) {
+        let activityVC = UIActivityViewController(activityItems: [data.text], applicationActivities: nil)
+        present(activityVC, animated: true)
     }
 }
 

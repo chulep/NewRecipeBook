@@ -21,5 +21,9 @@ enum DetailModels {
             var description: [String]?
             var isFavorite: Bool?
         }
+        
+        struct ShareViewModel {
+            var text: String
+        }
     }
 }
