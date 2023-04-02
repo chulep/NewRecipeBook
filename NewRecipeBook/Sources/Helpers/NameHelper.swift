@@ -39,13 +39,14 @@ struct NameHelper {
     struct BookScene {
         static let categoryLabelText = "Категории"
         static let allRecipeLabelText = "Все рецепты"
-        static let helpLabelText = "Ничего не найдено"
+        static let noResultText = "Ничего не найдено\nВведите другое название"
+        static let noRecipesText = "Добавьте свой первый рецепт"
     }
     
     //MARK: - Favorite scene
     
     struct FavoriteScene {
-        static let helpLabelText = "Нет избранных рецептов"
+        static let helpLabelText = "Добавляйте любимые рецепты\nв избранное"
     }
     
     //MARK: - Basket scene
@@ -121,6 +122,7 @@ struct NameHelper {
     //MARK: - Select Category scene
     struct SelectCategoryScene {
         static let backButtonText = "Назад"
+        static let noRecipes = "Скоро тут будут рецепты..."
     }
     
     //MARK: - Alerts

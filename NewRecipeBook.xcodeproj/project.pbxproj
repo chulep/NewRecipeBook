@@ -60,6 +60,9 @@
 		5DB73414296ABF8300A80440 /* AddDescriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB7340F296ABF8300A80440 /* AddDescriptionInteractor.swift */; };
 		5DB73415296ABF8300A80440 /* AddDescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73410296ABF8300A80440 /* AddDescriptionModel.swift */; };
 		5DB7342C296AF5FA00A80440 /* NewDesriptionSectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB73427296AF5FA00A80440 /* NewDesriptionSectorViewController.swift */; };
+		5DB9B80529D9543E00AD5197 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB9B80429D9543E00AD5197 /* WarningView.swift */; };
+		5DB9B80929D9609F00AD5197 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB9B80829D9609F00AD5197 /* ImageHelper.swift */; };
+		5DB9B80C29D981A500AD5197 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB9B80B29D981A500AD5197 /* UICollectionView+Extensions.swift */; };
 		5DBAE0DE2994D09400023E7B /* NewIngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBAE0DD2994D09400023E7B /* NewIngredientViewController.swift */; };
 		5DBBA3872966D33700E1700F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBBA3862966D33700E1700F /* AppDelegate.swift */; };
 		5DBBA3892966D33700E1700F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBBA3882966D33700E1700F /* SceneDelegate.swift */; };
@@ -144,6 +147,9 @@
 		5DB7340F296ABF8300A80440 /* AddDescriptionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionInteractor.swift; sourceTree = "<group>"; };
 		5DB73410296ABF8300A80440 /* AddDescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionModel.swift; sourceTree = "<group>"; };
 		5DB73427296AF5FA00A80440 /* NewDesriptionSectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDesriptionSectorViewController.swift; sourceTree = "<group>"; };
+		5DB9B80429D9543E00AD5197 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
+		5DB9B80829D9609F00AD5197 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		5DB9B80B29D981A500AD5197 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		5DBAE0DD2994D09400023E7B /* NewIngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIngredientViewController.swift; sourceTree = "<group>"; };
 		5DBBA3832966D33700E1700F /* NewRecipeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewRecipeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DBBA3862966D33700E1700F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +330,7 @@
 				5D56058D29ADDF6A00263265 /* UILabel+Extensions.swift */,
 				5DA8DCD829B3273700C16E2D /* UIBarButtonItem+Extensions.swift */,
 				5D1B7CB829B4654A00D9145A /* UISearchBar+Extensions.swift */,
+				5DB9B80B29D981A500AD5197 /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -459,6 +466,7 @@
 				5DD2E8252983EE2000E63CEB /* ColorHelper.swift */,
 				5DD2E8272983EFFA00E63CEB /* ConstantHelper.swift */,
 				5D779C1F29B247A400C68804 /* NameHelper.swift */,
+				5DB9B80829D9609F00AD5197 /* ImageHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -589,6 +597,7 @@
 				5D83BF22298FF44500435E59 /* CalculatorScene */,
 				5DA7D858297C356E00D96B31 /* SelectCategoryScene */,
 				5DA9C24E29CCAF50000AC5B9 /* LaunchScreen */,
+				5DB9B80A29D9678F00AD5197 /* CustomView */,
 				5DBBA39F2966D62700E1700F /* CoreDataLayer */,
 				5D720D752968017E0009693B /* Extensions */,
 				5D81C74E296F1CF9009A0D46 /* Helpers */,
@@ -625,6 +634,14 @@
 				5D71855E29701979006E5615 /* Router */,
 			);
 			path = AddDescriptionScene;
+			sourceTree = "<group>";
+		};
+		5DB9B80A29D9678F00AD5197 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				5DB9B80429D9543E00AD5197 /* WarningView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		5DBBA37A2966D33700E1700F = {
@@ -860,6 +877,7 @@
 			files = (
 				5DBBA3B32966FF8600E1700F /* BookCollectionViewCell.swift in Sources */,
 				5DBBA3BC2967071F00E1700F /* AddIngredientModel.swift in Sources */,
+				5DB9B80929D9609F00AD5197 /* ImageHelper.swift in Sources */,
 				5DA7D85E297C35D600D96B31 /* SelectCategoryPresenter.swift in Sources */,
 				5DA9C24B29CCA54D000AC5B9 /* IngredientTableViewCell.swift in Sources */,
 				5DA9C24929CCA3B2000AC5B9 /* SelectCategotyCollectionViewCell.swift in Sources */,
@@ -879,6 +897,7 @@
 				5DD2E8282983EFFA00E63CEB /* ConstantHelper.swift in Sources */,
 				5DBAE0DE2994D09400023E7B /* NewIngredientViewController.swift in Sources */,
 				5DBBA3AF2966F0F000E1700F /* RecipeTitleCollectionReusableView.swift in Sources */,
+				5DB9B80C29D981A500AD5197 /* UICollectionView+Extensions.swift in Sources */,
 				5D7CDFDF298D91C50010D2E2 /* BasketRouter.swift in Sources */,
 				5D71856529701D08006E5615 /* CoreDataStack.swift in Sources */,
 				5D2F18C62989743B009FDE69 /* CategoryCollectionViewCell.swift in Sources */,
@@ -919,6 +938,7 @@
 				5D89E175298E9F5900FB51CF /* BasketTableViewCell.swift in Sources */,
 				5DA9C24729CCA132000AC5B9 /* FavoriteCollectionViewCell.swift in Sources */,
 				5DD2E8262983EE2000E63CEB /* ColorHelper.swift in Sources */,
+				5DB9B80529D9543E00AD5197 /* WarningView.swift in Sources */,
 				5D79ACB02976815D00EAD25E /* CategoryCollectionReusableView.swift in Sources */,
 				5DB73411296ABF8300A80440 /* AddDescriptionPresenter.swift in Sources */,
 				5D83BF2B298FF47400435E59 /* CalculatorInteractor.swift in Sources */,
