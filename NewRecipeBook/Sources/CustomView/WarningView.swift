@@ -11,14 +11,14 @@ class WarningView: UIView {
     
     //MARK: - UI Element
     
-    let label: UILabel = {
+    private let label: UILabel = {
         $0.textColor = ColorHelper.gray
         $0.textAlignment = .center
         $0.numberOfLines = 2
         return $0
     }(UILabel())
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         $0.tintColor = ColorHelper.lightGray
         $0.contentMode = .scaleAspectFill
         return $0
@@ -41,7 +41,7 @@ class WarningView: UIView {
     
     //MARK: - Create UI
     
-    func createUI() {
+    private func createUI() {
         addSubview(label)
         addSubview(imageView)
         
@@ -49,7 +49,7 @@ class WarningView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            label.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -5),
+            label.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -5),
             label.leftAnchor.constraint(equalTo: leftAnchor),
             label.rightAnchor.constraint(equalTo: rightAnchor),
             
@@ -72,7 +72,7 @@ class WarningView: UIView {
         }
     }
     
-    func rotation() {
+    func navigateToAddButon() {
         imageView.transform = CGAffineTransform(rotationAngle: 2.5)
     }
 }

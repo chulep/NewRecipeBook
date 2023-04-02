@@ -65,6 +65,7 @@ class SelectCategoryViewController: UIViewController {
     private func createUI() {
         view.addSubview(collectionView)
         view.addSubview(warningView)
+        warningView.frame.origin.y -= 44
     }
     
     private func setupNavBar() {

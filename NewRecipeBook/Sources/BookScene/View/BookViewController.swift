@@ -71,7 +71,7 @@ final class BookViewController: UIViewController, BookDisplayLogic {
         self.data = data
         collectionView.reloadData()
         noRecipeWarningView.isHidden(count: data.displayRecipes.count)
-        noRecipeWarningView.rotation()
+        noRecipeWarningView.navigateToAddButon()
     }
     
     // MARK: - Setup VIP
