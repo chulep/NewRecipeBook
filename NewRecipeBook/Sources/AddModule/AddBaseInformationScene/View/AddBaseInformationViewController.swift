@@ -22,7 +22,8 @@ final class AddBaseInformationViewController: UIViewController {
     private lazy var imageButton: UIButton = {
         $0.addTarget(self, action: #selector(tapToImage), for: .touchUpInside)
         $0.backgroundColor = ColorHelper.babackgroundGrey
-        $0.setImage(UIImage(systemName: "camera")?.applyingSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: view.bounds.width / 8)), for: .normal)
+        $0.setImage(UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         $0.imageView?.contentMode = .scaleAspectFill
         $0.tintColor = ColorHelper.gray
         $0.layer.borderWidth = 1
@@ -32,7 +33,7 @@ final class AddBaseInformationViewController: UIViewController {
     
     private let nameTextField: UITextField = {
         $0.textAlignment = .center
-        $0.placeholder = NameHelper.AddModule.BaseInformationScene.nameTextFieldPlaceholderText
+        $0.attributedPlaceholder = NSAttributedString(string: NameHelper.AddModule.BaseInformationScene.nameTextFieldPlaceholderText, attributes: [NSAttributedString.Key.foregroundColor: ColorHelper.gray])
         $0.backgroundColor = ColorHelper.babackgroundGrey
         $0.font = UIFont.boldSystemFont(ofSize: 16)
         $0.layer.borderWidth = 1
