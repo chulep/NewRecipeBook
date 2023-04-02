@@ -13,13 +13,14 @@ protocol SelectCategoryDisplayLogic: AnyObject {
 
 class SelectCategoryViewController: UIViewController {
     
-    //MARK: - Properties
-    
     var interactor: SelectCategoryBusinessLogic?
     private(set) var router: (SelectCategoryRoutingLogic & SelectCategoryDataPassing)?
-    
     private var data: SelectCategoryModels.FecthData.ViewModel?
+    
+    //MARK: - UI Elements
+    
     lazy private var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFlowLayout())
+    lazy private var warningView = WarningView(text: NameHelper.SelectCategoryScene.noRecipes, image: ImageHelper.noyhing, frame: view.bounds)
     
     // MARK: - Init
     
@@ -37,6 +38,7 @@ class SelectCategoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        createUI()
         setupNavBar()
         setupCollectionView()
         interactor?.fetchData()
@@ -60,12 +62,17 @@ class SelectCategoryViewController: UIViewController {
     
     //MARK: - Create UI
     
+    private func createUI() {
+        view.addSubview(collectionView)
+        view.addSubview(warningView)
+        warningView.frame.origin.y -= 44
+    }
+    
     private func setupNavBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NameHelper.SelectCategoryScene.backButtonText, image: nil, target: self, action: #selector(tapToCancel))
     }
     
     private func setupCollectionView() {
-        view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SelectCategotyCollectionViewCell.self, forCellWithReuseIdentifier: SelectCategotyCollectionViewCell.identifire)
@@ -95,6 +102,7 @@ extension SelectCategoryViewController: SelectCategoryDisplayLogic {
         title = category
         self.data = data
         collectionView.reloadData()
+        warningView.isHidden(count: data.displayRecipes.count)
     }
 }
 

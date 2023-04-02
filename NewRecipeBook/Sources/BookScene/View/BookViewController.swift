@@ -34,13 +34,8 @@ final class BookViewController: UIViewController, BookDisplayLogic {
         return $0
     }(UIButton())
     
-    private var helpLabel = {
-        $0.text = NameHelper.BookScene.helpLabelText
-        $0.textColor = ColorHelper.gray
-        $0.textAlignment = .center
-        $0.isHidden = true
-        return $0
-    }(UILabel())
+    private lazy var searchWarningView = WarningView(text: NameHelper.BookScene.noResultText, image: ImageHelper.noResults, frame: view.bounds)
+    private lazy var noRecipeWarningView = WarningView(text: NameHelper.BookScene.noRecipesText, image: ImageHelper.tapNewRecipe, frame: view.bounds)
     
     private lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFlowLayout())
     
@@ -70,11 +65,13 @@ final class BookViewController: UIViewController, BookDisplayLogic {
         interactor?.fetchData()
     }
     
-    // MARK: - Protocols Metods
+    // MARK: - Displaying Metod
     
     func displaying(data: BookModels.FecthData.ViewModel) {
         self.data = data
         collectionView.reloadData()
+        noRecipeWarningView.isHidden(count: data.displayRecipes.count)
+        noRecipeWarningView.navigateToAddButon()
     }
     
     // MARK: - Setup VIP
@@ -96,11 +93,12 @@ final class BookViewController: UIViewController, BookDisplayLogic {
     //MARK: - UI
     
     private func createUI() {
-        view.addSubview(collectionView)
-        view.addSubview(addButton)
-        view.addSubview(helpLabel)
+        view.backgroundColor = ColorHelper.white
         
-        helpLabel.frame = view.bounds
+        view.addSubview(collectionView)
+        view.addSubview(noRecipeWarningView)
+        view.addSubview(addButton)
+        view.addSubview(searchWarningView)
         
         addButton.layer.cornerRadius = view.bounds.width / 7 / 2
         addButton.clipsToBounds = true
@@ -118,6 +116,7 @@ final class BookViewController: UIViewController, BookDisplayLogic {
         let searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.sizeToFit()
+        searchBar.setValue("Отмена", forKey: "cancelButtonText")
         navigationItem.titleView = searchBar
         navigationController?.hidesBarsOnSwipe = true
     }
@@ -238,9 +237,9 @@ extension BookViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(animated: true)
+        searchBar.tapCancelButton(animated: true)
         isSearch = false
-        helpLabel.isHidden = true
+        searchWarningView.isHidden = true
         navigationController?.hidesBarsOnSwipe = true
         interactor?.fetchData()
     }
@@ -249,11 +248,11 @@ extension BookViewController: UISearchBarDelegate {
         isSearch = true
         interactor?.search(data: BookModels.FecthData.Request(searchText: searchBar.text))
         navigationController?.hidesBarsOnSwipe = false
-        helpLabel.isHidden(count: data?.displayRecipes.count)
+        searchWarningView.isHidden(count: data?.displayRecipes.count)
+        searchBar.endEditing(true)
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.endEditing(animated: true)
         isSearch = false
         return true
     }

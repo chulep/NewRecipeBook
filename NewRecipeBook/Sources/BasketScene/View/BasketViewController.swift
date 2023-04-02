@@ -23,12 +23,7 @@ class BasketViewController: UIViewController {
     
     var tableView = UITableView()
     
-    private lazy var helpLabel: UILabel = {
-        $0.text = NameHelper.BasketScene.helpLabelText
-        $0.textColor = ColorHelper.gray
-        $0.textAlignment = .center
-        return $0
-    }(UILabel(frame: view.bounds))
+    private lazy var warningView = WarningView(text: NameHelper.BasketScene.helpLabelText, image: ImageHelper.emptyBasket, frame: view.bounds)
     
     private var clearButton: UIBarButtonItem?
     
@@ -79,7 +74,7 @@ class BasketViewController: UIViewController {
     private func createUI() {
         view.addSubview(tableView)
         tableView.frame = view.bounds
-        view.addSubview(helpLabel)
+        view.addSubview(warningView)
     }
     
     private func setupTableView() {
@@ -148,7 +143,7 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     //MARK: - Support Hide Method
     
     private func isHidden(count: Int?) {
-        helpLabel.isHidden(count: count)
+        warningView.isHidden(count: count)
         clearButton?.isHidden(count: count)
     }
 }

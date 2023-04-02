@@ -20,13 +20,8 @@ class FavoriteViewController: UIViewController {
     //MARK: - UI Elements
     
     lazy private var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFlowLayout())
+    lazy private var warningView = WarningView(text: NameHelper.FavoriteScene.helpLabelText, image: ImageHelper.noFavorite, frame: view.bounds)
     
-    private var helpLabel: UILabel = {
-        $0.text = NameHelper.FavoriteScene.helpLabelText
-        $0.textAlignment = .center
-        $0.textColor = ColorHelper.gray
-        return $0
-    }(UILabel())
     
     // MARK: - Init
     
@@ -73,8 +68,7 @@ class FavoriteViewController: UIViewController {
 
     private func createUI() {
         view.addSubview(collectionView)
-        view.addSubview(helpLabel)
-        helpLabel.frame = view.bounds
+        view.addSubview(warningView)
     }
     
     private func setupCollectionView() {
@@ -100,7 +94,7 @@ extension FavoriteViewController: FavoriteDisplayLogic {
     func displaying(data: FavoriteModels.FecthData.ViewModel) {
         self.data = data
         collectionView.reloadData()
-        helpLabel.isHidden(count: data.displayRecipes.count)
+        warningView.isHidden(count: data.displayRecipes.count)
     }
 }
 

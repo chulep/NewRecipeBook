@@ -8,7 +8,7 @@
 import UIKit
 
 extension UISearchBar {
-    func endEditing(animated: Bool) {
+    func tapCancelButton(animated: Bool) {
         setShowsCancelButton(false, animated: animated)
         endEditing(true)
         text = ""
