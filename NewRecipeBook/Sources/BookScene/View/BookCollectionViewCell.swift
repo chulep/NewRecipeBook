@@ -95,7 +95,7 @@ class BookCollectionViewCell: UICollectionViewCell {
             systemImageView.isHidden = true
             userImageView.isHidden = false
         } else {
-            systemImageView.image = (UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate))
+            systemImageView.image = ImageHelper.camera?.withRenderingMode(.alwaysTemplate)
             userImageView.isHidden = true
             systemImageView.isHidden = false
         }
