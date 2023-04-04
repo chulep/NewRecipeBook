@@ -16,6 +16,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     private var userImageView: UIImageView = {
         $0.backgroundColor = .clear
         $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
         return $0
     }(UIImageView())
     

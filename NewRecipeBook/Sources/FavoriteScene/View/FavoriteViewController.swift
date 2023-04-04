@@ -81,7 +81,7 @@ class FavoriteViewController: UIViewController {
         let cellSide = view.bounds.width / 2
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.itemSize = CGSize(width: cellSide - 30, height: cellSide * 1.2 - 30)
+        flowLayout.itemSize = CGSize(width: cellSide - 30, height: cellSide * 1.2 - 28)
         flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20)
         flowLayout.minimumLineSpacing = 20
         return flowLayout
