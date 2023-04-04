@@ -211,7 +211,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         } else {
             switch section {
             case 0:
-                return CGSize(width: view.bounds.width, height: 170)
+                return CGSize(width: view.bounds.width, height: 175)
             default:
                 return CGSize(width: view.bounds.width, height: 50)
             }
