@@ -237,7 +237,7 @@ extension BookViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.tapCancelButton(animated: true)
+        searchBar.cancel(animated: true)
         isSearch = false
         searchWarningView.isHidden = true
         navigationController?.hidesBarsOnSwipe = true
@@ -249,11 +249,11 @@ extension BookViewController: UISearchBarDelegate {
         interactor?.search(data: BookModels.FecthData.Request(searchText: searchBar.text))
         navigationController?.hidesBarsOnSwipe = false
         searchWarningView.isHidden(count: data?.displayRecipes.count)
-        searchBar.endEditing(true)
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         isSearch = false
+        searchBar.cancel(animated: true)
         return true
     }
 }

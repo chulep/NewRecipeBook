@@ -11,12 +11,17 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     static let identifire = "bookCell"
     
-    private var isSetImage = false
-    
     //MARK: - UI Elements
     
-    private var imageView: UIImageView = {
+    private var userImageView: UIImageView = {
+        $0.backgroundColor = .clear
+        $0.contentMode = .scaleAspectFill
+        return $0
+    }(UIImageView())
+    
+    private let systemImageView: UIImageView = {
         $0.tintColor = ColorHelper.lightGray
+        $0.contentMode = .scaleAspectFit
         $0.backgroundColor = .clear
         return $0
     }(UIImageView())
@@ -47,14 +52,14 @@ class BookCollectionViewCell: UICollectionViewCell {
         backgroundColor = ColorHelper.babackgroundGrey
         
         addSubview(lineView)
-        addSubview(imageView)
+        addSubview(systemImageView)
+        addSubview(userImageView)
         addSubview(titleLabel)
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        systemImageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         lineView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate(createImageViewConstraints(isSetImage: isSetImage))
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: bounds.width),
@@ -65,39 +70,34 @@ class BookCollectionViewCell: UICollectionViewCell {
             lineView.heightAnchor.constraint(equalToConstant: 1),
             lineView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor),
             lineView.leftAnchor.constraint(equalTo: leftAnchor),
-            lineView.rightAnchor.constraint(equalTo: rightAnchor)
+            lineView.rightAnchor.constraint(equalTo: rightAnchor),
+            
+            userImageView.topAnchor.constraint(equalTo: topAnchor),
+            userImageView.leftAnchor.constraint(equalTo: leftAnchor),
+            userImageView.rightAnchor.constraint(equalTo: rightAnchor),
+            userImageView.heightAnchor.constraint(equalTo: userImageView.widthAnchor),
+            
+            systemImageView.topAnchor.constraint(equalTo: topAnchor, constant: 25),
+            systemImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
+            systemImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
+            systemImageView.heightAnchor.constraint(equalTo: systemImageView.widthAnchor)
         ])
-    }
     
-    private func createImageViewConstraints(isSetImage: Bool) -> [NSLayoutConstraint] {
-        if isSetImage {
-            return [
-                imageView.topAnchor.constraint(equalTo: topAnchor),
-                imageView.leftAnchor.constraint(equalTo: leftAnchor),
-                imageView.rightAnchor.constraint(equalTo: rightAnchor),
-                imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
-            ]
-        } else {
-            return [
-                imageView.topAnchor.constraint(equalTo: topAnchor, constant: 25),
-                imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 25),
-                imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -25),
-                imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
-            ]
-        }
     }
     
     //MARK: - Set data
     
     func setData(title: String?, imageData: Data?) {
+        
         titleLabel.text = title
         if imageData != nil {
-            isSetImage = true
-            imageView.contentMode = .scaleAspectFill
-            imageView.image = UIImage(data: imageData!)
+            userImageView.image = UIImage(data: imageData!)
+            systemImageView.isHidden = true
+            userImageView.isHidden = false
         } else {
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = (UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate))
+            systemImageView.image = (UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate))
+            userImageView.isHidden = true
+            systemImageView.isHidden = false
         }
     }
 }

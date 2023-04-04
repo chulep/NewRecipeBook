@@ -40,8 +40,17 @@ final class BookInteractor: BookBusinessLogic, BookDataStore {
     //MARK: - Search Data
     
     func search(data: BookModels.FecthData.Request) {
+        CoreDataManager.execute.getAllDataTask { (result: Result<[Recipe]?, Error>) in
+            switch result {
+            case .success(let data):
+                self.data = data?.sorted { $0.dateId! > $1.dateId! }
+            case .failure(let error):
+                print(error)
+            }
+        }
         let searchText = data.searchText ?? ""
         guard let dataFiltred = self.data?.filter({ return String($0.name ?? "").lowercased().contains(searchText.lowercased()) }) else { return }
+        self.data = dataFiltred
         presenter?.present(data: BookModels.FecthData.Response(recipes: dataFiltred))
     }
 }
