@@ -27,19 +27,20 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         let bookNavController = UINavigationController(rootViewController: bookViewController)
         
         let favoriteViewController = FavoriteViewController()
-        favoriteViewController.tabBarItem.title = NameHelper.TabBar.favotiteTitle
+        favoriteViewController.title = NameHelper.TabBar.favotiteTitle
         favoriteViewController.tabBarItem.image = UIImage(systemName: NameHelper.TabBar.favoriteImage)
         favoriteViewController.tabBarItem.selectedImage = UIImage(systemName: NameHelper.TabBar.favoriteSelectImage)
+        let favoriteNavController = UINavigationController(rootViewController: favoriteViewController)
         
         let basketViewController = BasketViewController()
-        basketViewController.tabBarItem.title = NameHelper.TabBar.basketTitle
+        basketViewController.title = NameHelper.TabBar.basketTitle
         basketViewController.tabBarItem.image = UIImage(systemName: NameHelper.TabBar.basketImage)
         basketViewController.tabBarItem.selectedImage = UIImage(systemName: NameHelper.TabBar.basketSelectImage)
         let basketNavController = UINavigationController(rootViewController: basketViewController)
         
         viewControllers = [
             bookNavController,
-            favoriteViewController,
+            favoriteNavController,
             basketNavController
         ]
     }

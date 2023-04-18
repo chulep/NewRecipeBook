@@ -36,7 +36,6 @@ final class BookViewController: UIViewController, BookDisplayLogic {
     
     private lazy var searchWarningView = WarningView(text: NameHelper.BookScene.noResultText, image: ImageHelper.noResults, frame: view.bounds)
     private lazy var noRecipeWarningView = WarningView(text: NameHelper.BookScene.noRecipesText, image: ImageHelper.tapNewRecipe, frame: view.bounds)
-    
     private lazy var collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFlowLayout())
     
     // MARK: - Init
@@ -99,6 +98,7 @@ final class BookViewController: UIViewController, BookDisplayLogic {
         view.addSubview(noRecipeWarningView)
         view.addSubview(addButton)
         view.addSubview(searchWarningView)
+        searchWarningView.frame.origin.y -= 22
         
         addButton.layer.cornerRadius = view.bounds.width / 7 / 2
         addButton.clipsToBounds = true
@@ -118,7 +118,6 @@ final class BookViewController: UIViewController, BookDisplayLogic {
         searchBar.sizeToFit()
         searchBar.setValue("Отмена", forKey: "cancelButtonText")
         navigationItem.titleView = searchBar
-        navigationController?.hidesBarsOnSwipe = true
     }
     
     private func createFlowLayout() -> UICollectionViewFlowLayout {
@@ -240,14 +239,12 @@ extension BookViewController: UISearchBarDelegate {
         searchBar.cancel(animated: true)
         isSearch = false
         searchWarningView.isHidden = true
-        navigationController?.hidesBarsOnSwipe = true
         interactor?.fetchData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         isSearch = true
         interactor?.search(data: BookModels.FecthData.Request(searchText: searchBar.text))
-        navigationController?.hidesBarsOnSwipe = false
         searchWarningView.isHidden(count: data?.displayRecipes.count)
     }
     
