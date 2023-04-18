@@ -18,4 +18,12 @@ extension UINavigationItem {
         scrollEdgeAppearance = appearance
         compactAppearance = appearance
     }
+    
+    func setTitleColor(color: UIColor) {
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: color]
+        standardAppearance = appearance
+        scrollEdgeAppearance = appearance
+        compactAppearance = appearance
+    }
 }

@@ -15,7 +15,11 @@ final class AddBaseInformationViewController: UIViewController {
     
     var interactor: AddBaseInformationBusinessLogic?
     private(set) var router: (AddBaseInformationRoutingLogic & AddBaseInformationDataPassing)?
-    private var saveImageData: Data?
+    private var saveImageData: Data? {
+        didSet {
+            imageButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+    }
     
     //MARK: - UI Element
     

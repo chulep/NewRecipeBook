@@ -83,8 +83,8 @@ class DetailViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: NameHelper.DetailScene.backButtonText, image: nil, target: self, action: #selector(tapToCancel))
         let raightButtonsArray = [
             UIBarButtonItem(image: UIImage(isFavorite: viewModel?.isFavorite), style: .done, target: self, action: #selector(tapToFavorite)),
-            UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(tapToDelete)),
-            UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .done, target: self, action: #selector(tapToShare))
+            UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .done, target: self, action: #selector(tapToShare)),
+            UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(tapToDelete))
         ]
         navigationItem.rightBarButtonItems = raightButtonsArray
         navigationController?.navigationBar.prefersLargeTitles = true
